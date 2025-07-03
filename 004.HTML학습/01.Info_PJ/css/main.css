@@ -72,7 +72,7 @@ ul {
   word-spacing: 5px;
 
   /* 글자크기 fz */
-  font-size: 40px;
+  font-size: 55px;
 
   /* 글자 그림자 ts 
   text-shadow: x축 y축 블러 색; */
@@ -81,13 +81,8 @@ ul {
   /* 글자 그림자로 글자 테두리 주기
   글자 그림자를 4개 사용함! 콤마로 여러개! */
   text-shadow: 
-  /* 4방향으로 그림자 1px씩 보냄 */
-  1px 0  #000000,
-  -1px 0  #000,
-   0 1px  #000,
-   0 -1px  #000,
-   /* 그림자 셋팅은 추가로!  */
-   2px 4px 2px #0000009d;
+  /* 4방향으로 그림자 1px씩 보냄 */ 1px 0 #000000, -1px 0 #000,
+    0 1px #000, 0 -1px #000, /* 그림자 셋팅은 추가로!  */ 2px 4px 2px #0000009d;
 }
 
 /* 메뉴박스 */
@@ -112,33 +107,35 @@ ul {
 /* 리스트 링크 */
 .menu a {
   /* 웹폰트 적용하기 */
- font-family: "Diphylleia", serif;
- /* 글자크기  fz */
- font-size: 30px;
- /* 글자색 c */
- color: darkcyan;
- /* 기본 밑줄 없앰! tdn */
- text-decoration: none;
- /*  이미지를 포함한 글자 인라인요소간 진행방향 세로정렬(va) vertical-align */
- vertical-align: middle
- /* 사용값 top/middle/bottom/숫자값 */
+  font-family: "Diphylleia", serif;
+  /* 글자크기  fz */
+  font-size: 20px;
+  /* 글자색 c */
+  color: darkcyan;
+  /* 기본 밑줄 없앰! tdn */
+  text-decoration: none;
+  /*  이미지를 포함한 글자 인라인요소간 진행방향 세로정렬(va) vertical-align */
+  vertical-align: middle;
+  /* 사용값 top/middle/bottom/숫자값 */
 }
 
 /* a에 마우스 오버시 -> 요소: hover 
 가상클래스 :hover사용!*/
-.menu a:hover{
-/* 글자색 변경 */
-color: palevioletred;
+.menu a:hover {
+  /* 글자색 변경 */
+  color: palevioletred;
 
-/* 윗줄 생성 tdo */
-text-decoration: overline;
+  /* 윗줄 생성 tdo */
+  text-decoration: overline;
 
-/* 줄 종류 변경 tds : 파도모양 wavy */
-text-decoration-style: wavy;
+  /* 줄 종류 변경 tds : 파도모양 wavy */
+  text-decoration-style: wavy;
+  /* 그림자 생성 ts */
+  text-shadow: 2px 2px 2px #363636a5;
 }
 
 /* 네이버 로고 */
-.menu img{
+.menu img {
   width: 50px;
 }
 
@@ -183,7 +180,7 @@ text-decoration-style: wavy;
   /* 위 아래 마진 */
   margin-top: 20px;
   margin-bottom: 20px;
-  background-color: rgb(39, 75, 129);
+  background-color: rgb(94, 188, 214);
 }
 /* 3. 하단 영역 */
 .bottom-area {
@@ -191,4 +188,18 @@ text-decoration-style: wavy;
   text-align: center;
   /* 배경색 bgc */
   background-color: #d6e4f9;
+}
+
+/* 주소요소 */
+.bottom-area address {
+  /* 기본 이탤릭체 해제 fsn */
+  font-style: normal;
+  font-size: 25px;
+  /* 줄간격 1h - line-height
+  값으로 기본 숫자나 쓰는 배수를 사용함.(글자크기의 몇배)
+  단위를 사용하면 구체적인 크기로 줄간격을 줄 수 있음!
+  */
+  line-height: 40px;
+  /* 글자색 */
+  color: #222;
 }
