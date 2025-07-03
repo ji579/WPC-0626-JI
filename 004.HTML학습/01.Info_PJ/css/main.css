@@ -119,9 +119,24 @@ ul {
  color: darkcyan;
  /* 기본 밑줄 없앰! tdn */
  text-decoration: none;
-
-
+ /*  이미지를 포함한 글자 인라인요소간 진행방향 세로정렬(va) vertical-align */
+ vertical-align: middle
+ /* 사용값 top/middle/bottom/숫자값 */
 }
+
+/* a에 마우스 오버시 -> 요소: hover 
+가상클래스 :hover사용!*/
+.menu a:hover{
+/* 글자색 변경 */
+color: palevioletred;
+
+/* 윗줄 생성 tdo */
+text-decoration: overline;
+
+/* 줄 종류 변경 tds : 파도모양 wavy */
+text-decoration-style: wavy;
+}
+
 /* 네이버 로고 */
 .menu img{
   width: 50px;
