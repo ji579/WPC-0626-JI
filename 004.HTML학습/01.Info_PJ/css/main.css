@@ -46,7 +46,7 @@ ul {
   text-align: center;
 
   /* 배경색 bgc */
-  background-color: rgb(151, 217, 252);
+  background-color: rgb(153, 230, 255);
 }
 /* 메인 타이틀 */
 #main-title {
@@ -81,10 +81,13 @@ ul {
   /* 글자 그림자로 글자 테두리 주기
   글자 그림자를 4개 사용함! 콤마로 여러개! */
   text-shadow: 
+  /* 4방향으로 그림자 1px씩 보냄 */
   1px 0  #000000,
   -1px 0  #000,
    0 1px  #000,
-   0 -1px  #000;
+   0 -1px  #000,
+   /* 그림자 셋팅은 추가로!  */
+   2px 4px 2px #0000009d;
 }
 
 /* 메뉴박스 */
@@ -104,6 +107,24 @@ ul {
   display: inline-block;
   /* 패딩 p - padding: 위아래 양쪽 */
   padding: 0 5px;
+}
+
+/* 리스트 링크 */
+.menu a {
+  /* 웹폰트 적용하기 */
+ font-family: "Diphylleia", serif;
+ /* 글자크기  fz */
+ font-size: 30px;
+ /* 글자색 c */
+ color: darkcyan;
+ /* 기본 밑줄 없앰! tdn */
+ text-decoration: none;
+
+
+}
+/* 네이버 로고 */
+.menu img{
+  width: 50px;
 }
 
 /* 공통클래스 */
