@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>01-1.배경연습</title>
+    <style>
+      /* CSS 인터널 코딩구역 */
+      h1{
+        /* 글자중앙정렬 tac */
+        text-align: center;
+      }
+      /* body 배경셋팅하기 */
+      body{
+      /* 1. 배경색  bgc 
+      -> background-color */
+      background-color: rgb(247, 255, 198);
+
+      /* 2. 배경이미지 bgi 
+      -> background-image : url(이미지경로); 
+     ->  기본적으로 배경이미지는 반복됨! */
+      background-image: url(./imgs/bg_logo_a_01.png);
+
+      /* 3. 배경 반복여부 bgr
+      -> background-repeat: 옵션;
+      ->값 : no-repeat/ repeat-x/ repeat-y/repeat(기본값/x,y반복) */
+      background-repeat: no-repeat;
+
+      /* 4. 화면 고정 bga
+      -> background-attachment: fixed;
+      -> 스크롤시 배경이 보이는 화면에 고정됨!*/
+      background-attachment: fixed;
+
+      /* 화면고정 테스트를 위해 높이값 주기 */
+      height: 3000px;
+
+      /* 5.배경 위치 bgp
+      ->background-position: x축 y축 ;
+      -> x축값: left/right/center(입력 안 할시 기본값)/수치값
+      -> y축값: top/bottom/center(입력 안 할시 기본값)/수치값 */
+     background-position: right bottom;
+
+     /* 6. 배경크기 bgz
+     -> background-size: 값;
+     -> 값 : contain/ fill/ cover/ 수치값
+     -> 값을 2개쓰면 가로크기 세로크기 순서임*/
+     /* background-size: 400px 200px; */
+     background-size: auto 400px;
+    /* background-size: 400px; = background-size: 400px auto; */
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>01-1.배경넣기 연습</h1>
+    </div>
+  </body>
+</html>
