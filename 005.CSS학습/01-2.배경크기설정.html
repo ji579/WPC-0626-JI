@@ -48,7 +48,7 @@
       요소: nth-of-type(순번) 여러종류가 섞여있는 자식요소중 순번으로 선택하는 가상클래스!*/
       /* 한가지 종류의 자식요소일때에는? 요소: :nth-child(순번) */
 
-      /* 1번 div박스 */
+      /* 1번 div박스 세로는 잘림 */
       .wrap > div:nth-of-type(1) {
         background-size: 100% auto;
       }
@@ -60,11 +60,11 @@
       .wrap > div:nth-of-type(3) {
         background-size: 100% 100%;
       }
-      /* 4번 div박스 */
+      /* 4번 div박스 cotain:그림의 가로세로가 다 보이게하는거 */
       .wrap > div:nth-of-type(4) {
         background-size: contain;
       }
-      /* 5번 div박스 */
+      /* 5번 div박스 cover:이미지 비율도 맞고 빈공간을 안주면서 예쁘게 담겨 많이 사용 */
       .wrap > div:nth-of-type(5) {
         background-size: cover;
       }
