@@ -124,6 +124,23 @@
     보통 1.7 또는 1.8 을 많이 사용*/
   line-height: 1.7;
 }
+
+/* mark요소 디자인변화 */
+.contents mark {
+  /* 박스설정 inline에서 block으로 변경 */
+    display: block;
+    background-color: #e7e7e7;
+    margin: 20px 100px;
+    /* 글자설정 */
+    font-family: "Diphylleia", sans-serif;
+    font-size: 28px;
+    color: darkorange;
+    text-shadow: 2px 2px 2px #00000073;
+    padding: 60px;
+    border-bottom: 2px solid #222;
+    border-top: 2px solid #222;
+}
+
 /* 2-6. 기자정보  */
 .reporter {
   font-size: 15px;
