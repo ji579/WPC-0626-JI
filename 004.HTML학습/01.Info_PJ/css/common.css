@@ -115,7 +115,7 @@ ul {
   /* 기본 밑줄 없앰! tdn */
   text-decoration: none;
   /*  이미지를 포함한 글자 인라인요소간 진행방향 세로정렬(va) vertical-align */
-  vertical-align: middle;
+  vertical-align: 8px;
   /* 사용값 top/middle/bottom/숫자값 */
 }
 

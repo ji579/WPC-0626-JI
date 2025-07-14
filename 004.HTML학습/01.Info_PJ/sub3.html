@@ -194,7 +194,7 @@
       <ins>- 삽입된 텍스트
       <sub>- 아래 첨자 텍스트
       <sup>- 상위 첨자 텍스트 
-----------------------------------------------------------
+
     [ 2. HTML 인용관련 요소 ]
 
       1. 블록인용요소
@@ -234,7 +234,6 @@
           - 아랍어, 이스라엘어 등 반대방향으로 
           출력해야하는 문자를 인용할때 사용함!
 
-      __________________________________
         -->
 
       <!-- 2-6. 기자정보 -->
@@ -274,7 +273,89 @@
  -->
 
 
+<!-- 테크뉴스 : ul 사용! -->
+ <article class="tech-news news-box">
+  <!-- 제목  -->
+   <h3>테크뉴스</h3>
+   <!-- ul li는 반드시 같이 사용해야함
+    ul은 순서없는 리스트임 (unordered list) -->
+   <ul>
+    <li>
+      <a href="https://n.news.naver.com/mnews/hotissue/article/001/0015473464?type=series&cid=1087298"target="_blank">
+         "깊은 수면, '유레카 순간'으로 이어질 가능성 높다"
+        </a>
+    </li>
+        <li>
+      <a href="https://n.news.naver.com/mnews/hotissue/article/001/0015470559?type=series&cid=1087298"target="_blank">
+        제임스웹, 110광년 밖 원시행성원반서 준목성급 외계행성 포착
+      </a>
+    </li>
+   </ul>
+ </article>
 
+<!-- 랭킹뉴스 : ol사용 -->
+ <arcticle class= "rank-news news-box">
+  <!-- 제목 -->
+   <h3>랭킹뉴스</h3>
+   <!-- ol li는 반드시 같이 사용해야함
+    ol 순서있는 리스트임(ordered list)  -->
+    <ol>
+      <li><a href="https://n.news.naver.com/mnews/article/001/0015505262" target="_blank">안랩 "휴가 떠나기 전 인프라 보안 업데이트하세요"</a></li>
+      <li><a href="https://n.news.naver.com/mnews/article/011/0004508884" target="_blank">[영상] "와 미쳤다, 만든 사람 진짜 천재인가?"…갤폴드7 '11초' 광고영상 화제</a></li>
+      <li><a href="https://n.news.naver.com/mnews/article/079/0004044417" target="_blank">카카오내비, AI로 '불편한 길'도 학습한다…SCI 저널 등재</a></li>
+    </ol>
+ </arcticle>
+
+  <!-- 분야별 뉴스 : dl > dt, dd -->
+<article class="sec-news news-box">
+  <!-- 제목 -->
+   <h3>분야별 뉴스</h3>
+   <!-- dl은 반드시 dt.dd가 나와야함! -->
+    <dl>
+      <!-- 경제파트 -->
+       <dt>경제</dt> 
+       <dd>
+         <a href="https://n.news.naver.com/mnews/article/654/0000131227"target="_blank">억대 수익에도 세금은 나몰라라…유튜버 21명에 89억 부과</a>
+        </dd>
+          <dd>
+         <a href="https://n.news.naver.com/mnews/article/003/0013361611"target="_blank">술·담배 살 때 성인 여부 확인, '모바일 신분증'으로 편리하게</a>
+        </dd>
+       <!-- 사회파트 --> 
+        <dt> 사회</dt>
+        <dd>
+          <a href="https://n.news.naver.com/mnews/article/001/0015503640"target="_blank">
+인천 맨홀 사고 발주처도 처벌될까…쟁점은 도급 인정 여부</a>
+        </dd>
+          <dd>
+         <a href="https://n.news.naver.com/mnews/article/654/0000131227"target="_blank">  <dd>
+         <a href="https://n.news.naver.com/mnews/article/029/0002967931"target="_blank">억대 수익에도 세금은 나몰라라…유튜버 21명에 89억 부과</a>
+        </dd></a>
+        </dd>
+       <!-- TV/연예파트 -->
+        <dt>TV/연예</dt>
+        <dd>
+         <a href="https://m.entertain.naver.com/now/article/477/0000559751"target="_blank">박혜원, 단독 콘서트 '항해' 성황…첫곡부터 터진 떼창, 150분간 21곡</a>
+        </dd>
+          <dd>
+         <a href="https://m.entertain.naver.com/now/article/311/0001891296"target="_blank">'이효리♥' 이상순, 청취자에 혼났다..."한분 한분 너무 소중한 분" (완벽</a>
+        </dd>
+    </dl>
+</article>
+
+
+ <!-- 
+  [용어정의 리스트 : dl > dt + dd ]
+  dl : 용어리스트
+  (defines the description list)
+  dt : 용어
+  (defines the description list)
+  dd : 용어설명
+  (description each term)
+
+  주의 - dl은 반드시 자식요소 dt와 ddrk 한번이상 사용되야 함!!
+  또 주의 - dt와 dd는 형제관계임! (부모자식아님!!)
+  
+  -->
     </main>
     <!--***** 3. 하단영역 *****-->
     <footer class="bottom-area common-box">
