@@ -207,7 +207,6 @@
   margin-bottom: 17px;
 }
 
-
 /* 인용블록 박스 */
 .quote-box img {
   width: 200px;
@@ -253,13 +252,12 @@
 }
 
 /* 뉴스공통 a 링크 */
-.news-box a{
+.news-box a {
   font-size: 18px;
   line-height: 38px;
-
 }
 /* 오버시 가상클래스 :hover */
-.news-box a:hover{
+.news-box a:hover {
   color: rgb(3, 112, 67);
   text-shadow: 2px 2px 1 #00000085;
 }
@@ -270,10 +268,22 @@
 뒤에 넣기 ::after
 -> 필수 속성 ->>> content 
 */
-.tech-news a::before { content:' ***';}
-.tech-news a::after { content :':)';
+.tech-news a::before {
+  content: " *** ";
+}
+.tech-news a::after {
+  content: ":) ";
 }
 
+
+/* 랭킹뉴스 박스 */
+.rank-news ol {
+  /* 리스트 스타일 숫자형으로 다시사용
+  ol요소의 기본 auto 스타일은 decimal 즉, 숫자형 */
+  list-style: auto;
+  /* 기본 왼쪽패딩을 초기화했으므로 다시 조정함 */
+  padding-left: 10px;
+}
 
 /* 오늘의 작품&느낌 */
 .work {
@@ -310,9 +320,6 @@
     1. 방향: to top, to bottom, to left, to right
     2. 각도: 각도deg
     3. 콤마로 나열된 색상 뒤에 %수치를 쓰면 비율조정가능 */
-
-figure {
-}
 
 .work h4 {
   font-family: "Bagel Fat One", system-ui;
