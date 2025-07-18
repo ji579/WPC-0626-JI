@@ -443,23 +443,22 @@ n번째 타입 -> 요소:nth-of-type(순번)
   width: 60%;
   background-color: #c4c58d;
   padding: 0 20px;
-
 }
 /* 세번째 td */
 .photo-news td:last-child {
-   /* 가로 30%에 옅은배경 양쪽패딩 5px */
+  /* 가로 30%에 옅은배경 양쪽패딩 5px */
   width: 30%;
-      width: 30%;
-    padding: 5px;
-    background-color: #c4c58d
+  width: 30%;
+  padding: 5px;
+  background-color: #c4c58d;
 }
 
 /* 두번째 tr의 모든 td에 위. 아래 테두리 넣기
  -> 주의사항: 디자인은 항상 td에 한다*/
- .photo-news table tr:nth-child(2) td{
+.photo-news table tr:nth-child(2) td {
   border-top: 2px solid #ffffff;
-  border-bottom: 2px solid #fffdfd ;
- }
+  border-bottom: 2px solid #fffdfd;
+}
 
 /* a글자 세팅변경 */
 .photo-news a {
@@ -479,6 +478,25 @@ n번째 타입 -> 요소:nth-of-type(순번)
   -webkit-line-clamp: 2;
   /* 5. 말줄임 처리 방향설정(라인 진행은 vertical  */
   -webkit-box-orient: vertical;
+}
+
+/* 포토뉴스 제목 디자인 재정의 */
+.photo-news h3 {
+  /* 배경색제거 글자중앙 최대가로 제거 */
+  background: transparent;
+  text-align: center;
+  max-width: none;
+}
+
+/* 가상요소 앞에 넣기 */
+.photo-news h3::before {
+  content: "📸";
+  margin-right: 10px;
+}
+/* 가상요소 뒤에 넣기 */
+.photo-news h3::after {
+  content: "📺";
+  margin-left: 10px;
 }
 
 /* 테이블 이미지 */
