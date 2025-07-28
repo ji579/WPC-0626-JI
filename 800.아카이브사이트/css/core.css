@@ -2,49 +2,56 @@
 
 /* 아카이브 사이트 공통셋팅 CSS -core.css */
 
-/* 1. 웹폰트 */
+/* 1. 웹폰트*/
+
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Batang&family=Gowun+Dodum&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/*  font-family: "Instrument Sans", sans-serif; */
+/* 웬폰트 전체 적용하기 */
+body {
+  font-family: "Instrument Sans", "Gowun Dodum", sans-serif;
+}
 
 /* 2. 공통 클래스 */
 /* 2-1. 속박스 */
 
-.inbox{
-    /* 최대크기지정 */
-    max-width: 1440px;
-    /* 마영오 */
-    margin: 0 auto;
-
+.inbox {
+  /* 최대크기지정 */
+  max-width: 1440px;
+  /* 마영오 */
+  margin: 0 auto;
 }
 
 /* 인박스 클리어셋팅 */
-.inbox::after{
-    content: '';
-    display: block;
-    clear: both;
+.inbox::after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 /* 2-2. 파티션박스
  .inbox 내부에 옆으로 흘러가는 파티션박스를 구성한다!
 float 방식으로 구현할 경우 부모박스의 가상요로 clear한다 */
 
-.part-box{
-    float:left;
-    /* 임시최소높이 */
-    min-height: 200px;
-    
-    /* 임시 외곽선 */
-    outline: 2px dotted #ccc;
-    /* outline은 border와 셋팅법은 같음 
+.part-box {
+  float: left;
+  /* 임시최소높이 */
+  min-height: 200px;
+
+  /* 임시 외곽선 */
+  outline: 2px dotted #ccc;
+  /* outline은 border와 셋팅법은 같음 
     단, 크기를 차지하지않고 바깥쪽으로 아무런 영향없이 보이기만 함 */
 }
-
 
 /* 2-3. 파티션박스 12그리드 비율 클래스 */
 /* 기본 컬럼 설정 */
 [class*="col-"] {
-    /* [] 대괄호는 속성 선택자
+  /* [] 대괄호는 속성 선택자
     class*="col-" 클래스명이 col- 가 들어가 있는 클래스찾기 */
 
-    /* 컬럼당 양쪽패딩값 10px */
+  /* 컬럼당 양쪽패딩값 10px */
   padding: 0 15px;
   /* 컬럼크기에 패딩값 포함설정 bxb */
   box-sizing: border-box;
@@ -59,7 +66,7 @@ float 방식으로 구현할 경우 부모박스의 가상요로 clear한다 */
    직접계산하지 않고 수직만으로 결과를 볼 수 있는 편의성이 있음
    또한 계산의 원래 규칙을 파악할 수 있다. */
 .col-1 {
-  width: calc(100% / 12 * 1 );
+  width: calc(100% / 12 * 1);
   /* calc(100% / 12등분 * 몇개
   -> 12등분한 것 중 몇개의 컬럼수를 차지하는 비율인가 */
 }
