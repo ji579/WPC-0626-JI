@@ -173,6 +173,14 @@ a.my-cha-link {
     /* 요즘은 rgba( 숫자 숫자 숫자 / 알파값 ) */
        background-color: rgba(255, 255, 255, 0.8);
 }
+
+/* 파트제목 */
+.part-title{
+    color: #222;
+    font-size: 30px;
+    text-align: center;
+    border-bottom: 1px solid #000;
+}
 /* 플롯팅 설정하기_ 옆으로 흘러가기 */
 .link-box>div{
     /* 옆으로 흐르게 */
@@ -235,7 +243,7 @@ a.my-cha-link {
   transition: 1.5s linear;
 
   /* gif애니메이션 이미지 배경으로 넣기 */
-  background: url(../images/train.gif) no-repeat right/auto 100%;
+  background: url(../images/kirby.gif) no-repeat right/auto 100%;
   /* 이미지 x축 뒤집기(scale값을 -1줌)
   -> transform: scaleX(-1) 
   참고) Y축 뒤집기는 transform: scaleY(-1) */
