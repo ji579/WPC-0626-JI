@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8" />           
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>나의 아카이브 사이트</title>
     <!-- 폰트어썸 CSS -->
-    <link
-      rel="stylesheet"
+    <link          
+      rel="stylesheet" 
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
-    />
-    <!-- 메인 CSS -->
+    />     
     <link rel="stylesheet" href="./css/main.css" />
-  </head>
-  <body>
-    <!-- 1. 상단영역 -->
+
+    <!--     
+    1. 절대경로: 웹서버의 URL로 되어 있는 경로 
+    2.상대경로: 현재 웹페이지의 상대위치 찾는 경로
+     -> ./ 현재위치(아무것도 안써도 현재위치) 
+     -> ../ 한 폴더 위로 경로이동
+    3. 절대/상대경로 : 프로젝트 최상위 폴더 기준 경로 
+    -> / 맨 앞에 슬래쉬만 있고 이 표시가 최상위 root 폴더의미
+    
+    -->
+  </head> 
+  <body>   
     <div id="top-area">
       <section class="top-area inbox">
         <!-- 로고파티션 -->
@@ -21,7 +29,7 @@
           <img class="logo" src="./images/mylogo_11.png" alt="메인로고" />
         </div>
         <!-- 메뉴파티션 -->
-        <div class="part-box col-8">
+        <div class="part-box col-8"> 
           <!-- GNB메뉴 -->
           <ul id="gnb">
             <li>
@@ -79,6 +87,11 @@
 
             </div>
         </section>
+
+        <!-- 2-2. 트래이닝 프로젝트 파트 -->
+         <section id="training-pj-part" class="pjbox">
+          .tranining-pj-part.inbox
+         </section>
       </main>
     </div>
     <!-- 3. 하단영역 -->

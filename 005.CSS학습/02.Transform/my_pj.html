@@ -60,6 +60,18 @@
         /* -webkit-text-stroke: 1px red; */
       }
 
+      .sub-title {
+        /* 박스셋팅 */
+        text-align: center;
+        border-radius: 50px;
+        /* 글자 셋팅 */
+        color: #fff;
+        font-size: 50px;
+        /* line-height = 줄간격 */
+        line-height: 100px;
+
+}
+
       /* 전체 부모박스 */
       .main-contents {
         /* 부모자격주기 (span 타이틀의 부모) */
@@ -67,7 +79,7 @@
         /* 박스셋팅 */
         max-width: 1300px;
         /* 마영오 */
-        margin: 200px auto;
+        margin: 65px auto;
         border: 10px solid rgb(250, 240, 240);
         border-radius: 20px;
         padding: 20px;
@@ -93,8 +105,11 @@
         /* 옆으로 흐르게 */
         float: left;
         /* 3개씩 등분 */
-        width: calc(100% / 3);
-        /* 이미지 중앙정렬 tac */
+        width: calc(100% / 3);}
+       
+
+.main-contents > div:nth-child(1) ~ div {
+   /* 이미지 중앙정렬 tac */
         text-align: center;
 
         /* 아래쪽 마진 -> 안주고 마진탑주기
@@ -114,13 +129,13 @@
         font-size: 24px;
 
         /* 처음에 투명 opa */
-        opacity: 0;
+        opacity: 1;
 
         /* 트랜지션 trs */
-        transition: 0.3s .6s;
+        transition: 0.2s .3s;
       }
        .main-contents > div:hover span{
-        opacity: 1;
+        opacity: 0;
       }
 
       /* 애니메이션 이동박스 : .ani-box */
@@ -151,6 +166,7 @@
       /* 이미지가 겹치게 앱솔루트 셋팅 */
       #transform-box1 img {
         position: absolute;
+        margin-left: 60px;
         width: 300px;
         height: 300px;
       } 
@@ -161,22 +177,31 @@
         /* 트랜지션 trs : 바로출발, 처음만 천천히 ease-in */
         transition: 0.4s ease-in;
       }
+
       /* 2.첫번째 img자식 - 유정이 오버시 */
        #transform-box1:hover img:nth-of-type(2) {
-        /* 처음에 90도로 숨겨짐 */
-        transform: rotateY(0deg);
+        /* 처음에 90도로 숨겨짐 */     
         /* 트랜지션 trs : 
       보거미돌동안 0.4초 기다려 / 
       그대로 받아서 끝에 천천히 ease-out */
+      border: thick double rgb(255, 109, 109);
+        transform: rotateY(0deg);
+        z-index: 1;
+        /* 크기를 확대해 */
+        scale: 2 2;
+
+   /* 3. 처음에 0도로 보임 */
+/* 마지막 img자식- 보검 원본(돌아올때)*/
         transition: 0.4s ease-out 0.4s;}
           #transform-box1 img:nth-of-type(1) {
         /* 처음에 0도로 보임 */
-        transform: rotateY(0deg);
+        transform: rotateY(0deg) ;
         /* 트랜지션 trs : 
       돌아올때 유정이 0.4초 기다려 / 
       그대로 받아서 끝에 천천히 ease-out */
         transition: 0.4s ease-out 0.4s;
       }
+
       /* 4.마지막째 img자식 - 보거미 오버시 */
        #transform-box1:hover img:nth-of-type(1) {
         /* 오버시 90도로 숨겨짐 */
@@ -278,6 +303,8 @@ body:hover .main-contents{
   <body>
     <!-- 1. 제목 -->
     <h1 class="main-title">트랜스폼 연습</h1>
+    <!-- 부제목 -->
+      <h1 class="sub-title">Chiikawa</h1>
     <!-- 2. 컨텐츠 박스 -->
     <section class="main-contents">
       <div id="transform-box1">
