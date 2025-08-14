@@ -19,12 +19,12 @@
       #f1 {
         position: fixed;
 
-    /* 화면 정중앙 배치하기 */
-    top: 50%;
-    left: 50%;
-    /* 중앙이동 trl/ translate*/
-    translate: -50% -50%;
-    z-index: 999;
+        /* 화면 정중앙 배치하기 */
+        top: 50%;
+        left: 50%;
+        /* 중앙이동 trl/ translate*/
+        translate: -50% -50%;
+        z-index: 999;
         /******************************** 
 
        [ 4. fixed 포지션 ] 
@@ -91,15 +91,14 @@
         left: 100px;
 
         background: url(./images/ab5.jpg) no-repeat center/cover;
-      } 
-       /* 두번째 픽스드 박스*/
+      }
+      /* 두번째 픽스드 박스*/
       #f2 {
         position: fixed;
         z-index: 1;
         /* 젠틀픽스드 
         원래 있던 위치에서 화면고정
          */
-      
 
         background: url(./images/ab4.jpg) no-repeat center/cover;
       }
@@ -130,8 +129,8 @@
         border-radius: 값 값 ;(왼위대각선  오른위대각선)
         border-radius: 값;(모든모서리)
         */
-     
-      border-radius:  0% 0% 50% 50%;
+
+        border-radius: 0% 0% 50% 50%;
         background-color: lightsalmon;
         box-shadow: 5px 5px 5px #0000006b;
         font-size: 45px;
@@ -191,7 +190,7 @@
       .span-fixed {
         /* 포지션 픽스드 pof */
         position: fixed;
-        bottom: 50%;
+        bottom: 35%;
         right: 0;
         /* 나의 부모는?  보이는화면(빛이 나오는 화면) */
         z-index: 1;
@@ -200,24 +199,73 @@
         padding: 20px;
         background-color: #00d9ff;
 
-
         /* 아웃라인 ol */
         outline: 4px dotted darkmagenta;
       }
 
-      /* 앱솔루트 판타롱스타킹~~! */
-      .a5 {
-        position: absolute;
+      /* 포스터미리보기: 픽스드 포지션이용 */
+      .poster-fixed {
+        position: fixed;
         top: 20%;
-        right: 10%;
+        /* 오른쪽에 박스를 붙여놓고 translate로
+      내 크기만큼 오른쪽방향(x축으로 이동!) */
+        right: 0;
+        translate: 100%;
+        z-index: 9999999;
         /* 부모는?   보이는 화면*/
 
-        /* 아웃라인 */
-        outline: 10px ridge goldenrod;
+        /* 보더 */
+        border: 10px ridge goldenrod;
+
+        transition: 0.4s ease-out;
+      }
+      /* 포스터박스 오버시 transition 보이기 */
+      .poster-fixed:hover {
+        translate: 0;
+      }
+
+      /* 포스터보기 타이틀 */
+      .poster-fixed::before {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: -17px;
+        width: 5px;
+        height: calc(100% + 20px);
+        background-color: rgb(196, 32, 32);
+        z-index: 999999;
+      }
+
+      .poster-fixed h3 {
+        /*앱솔루트 포지션주기 */
+        position: absolute;
+        /* 보더크기는 앱솔루트에서 제외되므로
+    보더크기만큼 -10px */
+        top: -10px;
+        /*오른쪽기준선으로부터 밀기 
+    부모박스 보더제외한 내부크기 100% + 한쪽보더 10px */
+        right: calc(100% + 10px);
+
+        /* 기본마진없앰 */
+        margin: 0;
+        /* color: white; */
+        text-align: center;
+        /* 높이값= 부모100% +위아래보더값 20px */
+        height: calc(100% + 20px);
+        /* 글자배치 세로방향 left-> right */
+        writing-mode: vertical-lr;
+        letter-spacing: 30px;
+        font-size: 24px;
+        color: rgb(255, 255, 255);
+        text-shadow: 2px 2px 2px #00000070;
+
+        padding: 0 10px;
+        background-color: goldenrod;
+        border-radius: 10px 0 0 10px; /* 위치값사용시 부모는? .poster-fixed */
       }
 
       /* 이미지가 박스에 단독으로 들어갈 경우 하단에 생기는 공백없애기 */
-      .a5 img {
+      .poster-fixed img {
         vertical-align: middle;
         /* 인라인요소가 세로정렬 속성인 vertical-align의 값을 top/middle/bottom 중 어떤값을 사용해도
         하단공백을 없애는 효과가 있다( 단,baseline 값은 효과없음 ) */
@@ -297,9 +345,11 @@
     <!-- 두번째 앱솔루트 박스 -->
     <div class="bx" id="a2">a2</div>
 
-    <!-- 앱솔루트 판타롱스타킹~~! -->
-    <div class="a5" title="앱솔루트 판타롱스타킹~~!">
+    <!-- 포스터미리보기 픽스드로~ -->
+    <div class="poster-fixed" title="포스터미리보기 픽스드로~">
       <img src="./images/ab0.jpg" alt="포스터" />
+      <!-- 포스터보기 타이틀 박스 -->
+      <h3>포스터보기</h3>
     </div>
 
     <!-- 앱솔루트끼리는 서로 겹친다 -->
