@@ -1,0 +1,73 @@
+@charset "utf-8";
+/* 심슨 가족 인사 애니메이션 CSS - simpson.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Black+And+White+Picture&display=swap");
+
+/* 전체박스 */
+.house {
+  position: relative;
+  /* 히위 앱솔루트 요소들의 부모자격을 주기 위해 */
+  width: 800px;
+  height: 441px; 
+  margin: 0 auto; 
+  /* 배경이미지 */
+  background: url(../images/house.png) no-repeat;
+
+  /* 넘치는 자식요소 숨기기 */
+  overflow: hidden;
+ 
+  
+  /* 문짝 (.door)을 원근 입체로 보이게 하기위해 부모요소인
+  .house 에 원근설정을 한다 
+  -> 수치값의 의미는 기준축으로 부터 소실점까지의 거리!
+  -> 이 값이 어떤 기준수치값보다 작으면 원근이 커진다
+  */
+  perspective: 480px;
+}
+
+/* 임시로 숨기기 */
+.lisa ~ * {
+  display: none;
+}
+
+/* 1. 심슨 */
+.simpson {
+  position: absolute;
+  top: 307px;
+  left: 358px;
+  /* 부모는? house  */
+  width: 30px;
+}
+
+/* 2. 문 */
+.door {
+  /* 부모는? house */
+  position: absolute;
+  top: 285px;
+  left: 359px;
+
+  /* 문 회전축 오른쪽끝으로 변경 */
+  transform-origin: right;
+
+  /* 문 y축 회전 테스트 */
+  /* rotate: y 130deg; */
+
+}
+/* 마지심슨 */
+.marge {
+    position: absolute;
+    bottom: -228px;
+    right: -300px; /* -231px; */
+    width: 416px;
+    transform-origin: bottom;
+    rotate: 10deg /*  -18deg */;
+}
+
+.lisa {
+    position: absolute;
+    width: 189px;
+    position: absolute;
+    top: 110px;
+    left: -246px;/* -37px; */
+    rotate: 90deg;;
+}
