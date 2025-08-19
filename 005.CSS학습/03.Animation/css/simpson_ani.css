@@ -129,10 +129,11 @@
     rotate: -18deg;
   }
 }
+/* 4-1.리사심슨 */
 .lisa {
     /* 애니메이션_animation: 이시이지반방마 */
     /* 4-1. 리사 애니메이션 호출설정*/
-    animation:  lisa-ani .8s ease-out 7s forwards;
+    animation:  lisa-ani .8s ease-out 6s forwards;
 }
 
 
@@ -144,3 +145,33 @@
  left:-37px
   }
 }
+    /* 5-1.메기 */
+.maggie {
+    /* 애니메이션_animation: 이시이지반방마 */
+    /* 4-1. 리사 애니메이션 호출설정*/
+    animation: 
+    /* 등장애니 */
+     maggie-ani .8s ease-out 6.5s forwards,
+     /* 업다운애니 */
+     maggie-updownani .5s ease-in-out 7.3s infinite alternate
+     ;
+}
+
+
+/* 5-2-1. 메기 애니키프레임: 등장애니*/
+@keyframes maggie-ani {
+  /* from 혹은 0% 설정이 원본셋팅과 같다면 생략할 수 있다. */
+
+  to /* =100% 와 같음 */ {
+  
+    bottom: -93px;
+  }
+}
+/* 5-2-2.. 메기 애니키프레임: 오르락내리락 애니*/
+@keyframes maggie-updownani {
+  /* from 혹은 0% 설정이 원본셋팅과 같다면 생략할 수 있다. */
+
+  to /* =100% 와 같음 */ {
+
+    translate: 0 1.5%;
+  }}
