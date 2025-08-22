@@ -36,10 +36,19 @@
         /* 줄바꿈방지 */
         white-space: nowrap;
 
-        border: 4px solid purple;
+        /* border: 4px solid purple; */
         /* 보더박스:보더,패딩포함 */
         box-sizing: border-box;
       }
+
+      .ka1{
+      position: absolute;
+    top: -37px;
+    right: 104px;
+    width: 354px;
+    
+}
+
     </style>
 
     <!-- 자바스크립트 코딩구역! -->
@@ -81,7 +90,7 @@
         // 2-1. 배경이미지 넣기
         // CSS배경 변경하기
         // style 객체안에 각종 css속성이 모두 만들어져있음!
-        피박스.style.background = "url(./images/kimbs.jpg) no-repeat top/cover";
+        피박스.style.background = "url(./images/e.png) no-repeat top/cover";
 
         // 2-2. 글자색 변경하기
         피박스.style.color = "white";
@@ -90,10 +99,10 @@
         피박스.style.textShadow = "1px 1px 1px red";
 
         // 2-4. 박스 둥글게 만들기
-        피박스.style.borderRadius = "50%";
+        // 피박스.style.borderRadius = "50%";
 
         // 2-5. 트랜지션 넣기
-        피박스.style.transition = "2s";
+        피박스.style.transition = "1s";
 
         // 2-6. 두바뀌 회전하기 : 720deg 또는 2turn
         피박스.style.rotate = "2turn";
@@ -104,7 +113,7 @@
         //2-8. 트랜스폼으로 중앙이동하기 -> translate:-50% -50%
         피박스.style.translate = "-50% -50%";
         // 2-9. body에 배경색 넣기
-        document.body.style.backgroundColor = "#003825";
+        document.body.style.backgroundColor = "darkblue";
         // body요소를 메모리공간주소에 넣기
         var 바디 = document.body;
 
@@ -129,7 +138,11 @@
     color: orange;
     padding: 15px; `;
 
-      } //////////// 김비서나와라 함수 ////////////
+      } 
+    
+      
+      
+      //////////// 김비서나와라 함수 ////////////
       ////////////////////////////////////////////
 
       ///////////////////////////
@@ -139,7 +152,7 @@
     <!-- 드라마 소개박스 -->
     <p
       class="pbox"
-      title="클릭하시면 김비서가 나옵니다!"
+      title="클릭하시면 지구가 나옵니다!"
       onclick="
     // onclick 이벤트속성은 JS와 연결되는
     // 기본속성이다!
@@ -176,8 +189,8 @@
 
     .innerHTML=`
       <img 
-      src='./images/kim.png' 
-      alt='김비서가 왜그럴까?'>
+      src='./images/ka.png' 
+      alt='케로로로고?'>
     `;
 
     // [ 따옴표규칙 ]
@@ -193,7 +206,7 @@
     // 호출은 함수이름으로 호출한다!
     // 호출시 소괄호()를 뒤에 사용한다!
 
-    김비서나와라('아이스크림 사와!');
+    김비서나와라('지구정복');
     
     "
     >
@@ -202,7 +215,10 @@
 
       <!-- 김비서에 전달된 요청찍기 -->
 
-      <b class="요청"></b>
+<b class="요청"></b>
     </p>
+    
+    <img src="./images/ka2.png" alt="케로로" class="ka1">
+    
   </body>
 </html>
