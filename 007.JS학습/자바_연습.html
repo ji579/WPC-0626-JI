@@ -46,12 +46,28 @@
 
       .ka1 {
         position: absolute;
-      top: 104px;
-     left: 50%;
+     top: 78px;
+    transform: rotate(-1deg);
+    left: 50%;
     width: 314px;
       translate: -58% 2%;
     opacity: 1;
       }
+      
+.요청::before{     
+ content: "";
+    position: absolute;
+    top: -10px;
+    left: -9px;
+    width: 5px;
+    height: 140px;
+    border-radius: 10px;
+    background-color: rgb(161 93 21);
+    z-index: 999999;}
+
+
+
+
     </style>
 
     <!-- 자바스크립트 코딩구역! -->
@@ -95,6 +111,8 @@
         // CSS배경 변경하기
         // style 객체안에 각종 css속성이 모두 만들어져있음!
         피박스.style.background = "url(./images/e.png) no-repeat top/cover";
+
+
 
         // 2-2. 글자색 변경하기
         피박스.style.color = "white";
@@ -141,9 +159,9 @@
     rotate: 20deg;
     color: orange;
     padding: 15px; `;
-    
-    
-}
+
+   
+    }
 
 
       //////////// 김비서나와라 함수 ////////////
@@ -221,11 +239,10 @@
       <b class="요청"></b>  
       
     </p>
-
-    
+<div class="ka1" onclick="피박스">
       <!-- 실패시 지우는 부분 -->
-      <img src="./images/ka2.png" alt="케로로" class="ka1" />
-    <b class="등장"></b>
+      <img src="./images/ka2.png" alt="케로로" class="ka1"/>
+  </div>
   
   </body>
 </html>
