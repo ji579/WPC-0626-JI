@@ -32,6 +32,8 @@
       3) 모두 채운후 비율없이 만드는 방법 100% 100%
        */
         background-size: cover;
+        /* 가로 스크롤 없애기 */
+        overflow-x: hidden;
       }
       /* 1. 제목 */
       .main-title {
@@ -308,11 +310,9 @@
   translate:140% ;
   /* 트랜지션trs */
   transition: .8s ease-out 1s;
+  animation: first-ani .8s easeout 1s forwards;
  }
-body:hover .main-contents{ 
-  translate: 0 ;
 
-}
 
         #transform-box10:hover img {     
         transform: rotatey(180deg)
@@ -367,6 +367,11 @@ transform: rotateY(90deg);
 transition:  .4S ease-in;
 }
 
+@keyframes first-ani{
+to{
+  translate: 0;
+}
+}
     </style>
   </head>
   <body>
