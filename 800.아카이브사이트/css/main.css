@@ -32,26 +32,33 @@ body {
 
 /* float해제설정 */
 #gnb {
+  /* 플렉스박스 */
+  display: flex;
+
+  /* 진행방향정렬 */
+  justify-content: space-between;
+  
   max-width: 699px;
   margin: 0 auto;
   /* outline: 1px solid red; */
 }
-#gnb::after {
+/* #gnb::after {
   content: "";
   display: block;
   clear: both;
-}
+} */
 #gnb li {
-  float: left;
+
+  /* float: left; */
   /* 높이값 만큼 줄간격셋팅 */
   line-height: 112px;
 }
-/* 두번째 li부터 끝까지 왼쪽마진 */
-#gnb li + li {
-  margin-left: 18.8%;
+/* 두번째 li부터 끝까지 왼쪽마진 --> 플렉스는 불필요함*/
+/*#gnb li + li {
+   margin-left: 18.8%; */
   /* 마진의 %값의 기준은
-    부모박스의 크기이다! */
-}
+    부모박스의 크기이다! }*/
+
 /* 깃허브 박스 */
 .git-box {
   text-align: right;
@@ -164,6 +171,8 @@ a.my-cha-link {
 .link-box{
     /* 가로크기는 레이아웃은 아니지만
     12그리드 크기를 기준해서 준다. */
+    /* 플렉스박스 */
+    display: flex;
     width: calc(100%/12*10);
     /* 블럭요소 가로중앙 */
     margin: 0 auto;
@@ -183,8 +192,10 @@ a.my-cha-link {
 }
 /* 플롯팅 설정하기_ 옆으로 흘러가기 */
 .link-box>div{
-    /* 옆으로 흐르게 */
-    float: left;
+
+  
+    /* 옆으로 흐르게   float: left; */
+  
     /* 절반 크기셋팅 */
     width: 50%;
     /* 최소높이값 설정 */
