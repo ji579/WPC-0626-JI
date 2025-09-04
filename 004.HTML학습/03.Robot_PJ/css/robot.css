@@ -74,13 +74,14 @@ body * {
 }
 /* 코 */
 .nose {
-  top: 79px;
- left: 50%;
-  translate: -50%;
-  width: 58px;
-  height: 86px;
+top: 119px;
+    left: 50%;
+    translate: -50%;
+    width: 45px;
+    height: 40px;
   border-radius: 20px;
-  background: url(../images/nose.jpg) no-repeat 0px 0 / 109% 104%;
+  background: #373737;
+  /* background: url(../images/nose.jpg) no-repeat 0px 0 / 109% 104%; */
 }
 
 /* 입 */
@@ -272,17 +273,68 @@ body * {
 
 }
 
+/* 로봇부츠 다리하단 span의 가상요소로 만들기 */
+/* 부츠상단 before */
+.leg span::before{
+  content: '';
+  position: absolute;
+  top: 30%;
+  left: -5%;
+  width: 110%;
+  height: 80%;
+  background-image: linear-gradient(to right, rgb(75, 255, 255), #f54591);
+  border-top: 8px solid #000;
+}
+/* 부츠하단 after */
+.leg span::after{
+  content: '';
+  position: absolute;
+ top: 110%;
+  left: -20%;
+  width: 140%;
+  /* 패딩으로 높으값 만들기
+  -> 패딩값을 %로 주면 부모박스 가로크기에 한 비율이 생김. */
+padding-top: 50%;
+  background-image: linear-gradient(to right, rgb(192, 75, 255), #5f45f5);
+  border-bottom: 8px solid #000;
+border-radius: 50px 50px 0 0;
+}
+
 
 /* TV */
 .tv{
-    top: 50px;
+    top: 0px;
     left: 50%;
     translate: -50%;
-    width: 120px;
-    height: 80px;
+width: 163px;
+    height: 110px;
     /* 가상요소보다 위 */
     z-index: 2;
     background: url(../images/tv.jpg)no-repeat 0/100%;
 }
+
+.screen{
+  position: absolute;
+     top: 3px;
+    left: 9px;
+    width: 115px;
+    height: 94px;
+    border-radius: 20px;
+    background-color: red;
+  /* 넘치는 자식요소 숨기기 */
+  overflow: hidden;
+  } */
+
+    /* 아이프레임 */
+    .screen iframe{
+      position: absolute;
+    top: 0%;
+    left: -2px;
+    width: 104%;
+    height: 102%;
+        /*기본 보더 없애기 */
+        border: none;
+    }
+    
 
 /************* 4. 하단영역 *************/
