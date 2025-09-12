@@ -21,6 +21,19 @@ body * {
 .top-area .cont-box{
     justify-content: space-between;
 }
+
+.logo-box{
+    width: 126px;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* 메뉴박스 */
+.menu-box{
+    padding-right: 10px;
+}
+
+
 /* 메뉴그룹 플렉스 */
 .menu-group{
 
@@ -36,6 +49,18 @@ body * {
     display: flex;
     font-size: 1.8rem;
 }
+
+/* 탑메뉴 */
+.top-menu ul{
+     font-size: 1.6rem;
+    gap: 2rem;
+
+    
+}
+/* GNB메뉴 */
+.gnb-menu ul{
+    font-size: 1.8rem;
+    gap: 3.2rem;}
 
 /***************** 1.5. 드라마파트메뉴 **********/
 /***************** 2. 메인영역 *****************/
