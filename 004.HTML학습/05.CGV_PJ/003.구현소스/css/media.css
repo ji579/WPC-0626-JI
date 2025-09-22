@@ -103,5 +103,10 @@
   .movie-info h2 {
     font-size: 3.5vw;
   }
+    /* 오시는길 숨기기 */
+  .goMV{
+    display: none;
+  }
+
 }
 /********** 최대크기 700px 이하 종료 **********/
