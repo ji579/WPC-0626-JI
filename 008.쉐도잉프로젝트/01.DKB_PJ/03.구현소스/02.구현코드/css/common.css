@@ -1,15 +1,14 @@
 @charset "utf-8";
-/* 도깨비 PJ 공통모듈CSS - common.css */
-/* 상단, 배너, 드라마파트메뉴, 하단 모듈 다 공통임. */
+/* 도깨비 PJ 공통모듈 CSS - common.css */
+/* 상단, 배너, 드라마파트메뉴, 하단 모듈 */
 
-/* 공통셋팅 */
+/* 공통 요소 셋팅 */
 html{
     /* 부드러운 스크롤 셋팅 */
-    scroll-behavior: smooth;  
-
-    /* 전체 글자크기 */
+    scroll-behavior: smooth;
+    /* 전체 글자 크기 셋팅
+    -> rem단위 계산편의를 위해 10px로 셋팅 */
     font-size: 10px;
-    /* rem단위 계산편의를 위함 */
 }
 
 body{
@@ -20,8 +19,9 @@ body{
 /***************** 1. 상단영역 *****************/
 /* 상단영역 최상위 부모박스 */
 #top-area {
+  /* 부모자격! */
   position: relative;
-  /* 하단 보더 */
+  /* 하단보더 */
   border-bottom: 1px solid #ccc;
   /* 상단영역이 항상위! */
   z-index: 9999;
@@ -44,10 +44,11 @@ body{
 /* 로고타이틀박스 */
 h1.logo {
   position: relative;
+  /* 부모자격 */
   height: 100%;
 
-  /* 확정된 그라데이션 이미지 비트맵으로 출력하기 때문에 애니메이션 불가 */
-  /* background-image: radial-gradient(#00000054, transparent 71%, transparent); */
+  /* background-image: radial-gradient(#00000054, transparent 71%, transparent); -> 확정된 그라데이션
+  이미지 비트맵으로 출력하기 때문에 애니메이션 불가! */
 }
 
 /* 가상요소 박스 그림자 */
@@ -58,12 +59,13 @@ h1.logo::before {
   left: 0;
   width: 100%;
   height: 100%;
-  /* 박스그림자로 대체 -> 왜? 애니메이션 때문 */
-  box-shadow: 0 0 50px 10px rgba(0, 0, 0, 0.451);
+  /* 박스그림자로 대체 - 왜? 애니메이션 때문! */
+  box-shadow: 0 0 50px 10px #ff00005c;
   /* 원형 */
   border-radius: 50%;
   /* 축소 */
   scale: 0.5;
+
   /* 애니메이션호출 */
   animation: logo-shadow-ani 0.6s ease-in-out infinite alternate;
 }
@@ -71,7 +73,7 @@ h1.logo::before {
 /* 로고그림자효과 키프레임 */
 @keyframes logo-shadow-ani {
   to {
-    box-shadow: 0 0 40px 30px rgba(142, 59, 59, 0.451);
+    box-shadow: 0 0 40px 30px #ff00005c;
   }
 }
 
@@ -196,8 +198,9 @@ h1.logo::before {
 .gnb-menu > ul > li:hover > a {
   color: #f00;
 }
+
 /* 서브표시 화살표 */
-.gnb i {
+.gnb-menu i {
   font-size: 1rem;
   vertical-align: 0.3rem;
 }
@@ -205,10 +208,13 @@ h1.logo::before {
 /* 서브메뉴 */
 .sub-menu {
   position: absolute;
-  /* left값과 width값 % 는 부모를 찾는다. */
+  /* left값과 width값%는 부모를 찾는다! */
   left: 0;
   width: 100%;
   box-sizing: border-box;
+
+  /* 배경색은 속박스인 패딩박스에 준다! */
+  /* background-color: #fff;-> 삭제! */
 
   /* 서브메뉴를 숨기기위해 넘치는 자식 숨기기설정 */
   overflow: hidden;
@@ -233,12 +239,13 @@ h1.logo::before {
   
 }/* 1024px 이상인 DT에서만 오버 셋팅적용 종료 */
 
-
 /* 패딩만 내부에 다른 블록요소를 사용함!
 -> 자식요소 숨기기 부모박스엔 패딩을 줄 수 없다! */
 .padding-box {
   padding: 5vw;
+  /* li에서 25px떨어져서 하단 보더가 보이게함 */
   margin-top: 25px;
+  /* 배경색은 여기에~!!! */
   background-color: white;
 }
 
@@ -250,12 +257,20 @@ h1.logo::before {
   font-size: 3.6rem;
   margin-bottom: 2.4rem;
 }
+
+/* 타이틀바 소속 버튼 */
+.title-bar button {
+  background-color: transparent;
+  border: none;
+  font-size: 2.5vh;
+  cursor: pointer;
+}
+
 /* 서브리스트 ul */
 .sub-list ul {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  padding: 12px 0;
   /* height: 100px; */
 
   /* 글자크기 */
@@ -285,13 +300,14 @@ h1.logo::before {
 .three-line {
   height: 13.8rem;
 }
+
 /* 모바일용 버튼 그룹박스 */
 .btn-group{
   position: absolute;
   top: 50%;
   translate: 0 -50%;
   right: 3vw;
-    /* 플렉스 */
+  /* 플렉스 */
   /* display: flex; */
   display: none;
   gap: 20px;
@@ -303,9 +319,8 @@ h1.logo::before {
   /* 아이콘설정(글자와 같음) */
   font-size: 3rem;
   cursor: pointer;
-  color: #373737;
+  color: #222;
 }
-
 /* 햄버거 버튼 셋팅 : 처음에 두번째 i태그인 x버튼 안보임 */
 .btn-ham i:nth-child(2){
   display: none;
@@ -320,8 +335,6 @@ h1.logo::before {
   display: none;
 }
 
-
-
 /***************** 1.5. 드라마파트메뉴 *****************/
 /***************** 2. 메인영역 *****************/
 /***************** 2-1. 배너영역 *****************/
@@ -331,8 +344,9 @@ h1.logo::before {
 }
 /* 배너박스 */
 .banner-box {
-  /* 부모자격- 이동버튼 등  */
   position: relative;
+  /* 부모자격 - 이동버튼 등 */
+
   /* 배너이미지크기 */
   height: 100%;
   /* 넘치는 배너 숨기기 */
@@ -362,7 +376,6 @@ h1.logo::before {
   /* 등분할 설정 - 주석 */
   /* flex: 1; */
 }
-
 /* 배너이미지 */
 .banner-slide img {
   width: 100%;
@@ -372,6 +385,7 @@ h1.logo::before {
     비율에 맞게 박스를 가득 채움! */
   object-fit: cover;
 }
+
 /*이동버튼*/
 .abtn {
   position: absolute;
@@ -390,8 +404,7 @@ h1.logo::before {
   right: 50px;
 }
 
-/***************** 2-2.5 드라마파트영역 *****************/
-
+/************* 2-2.5. 드라마파트메뉴 : 스티키메뉴 ***************/
 #spart-menu {
   /* 스티키 포지션 - 상단스크롤 걸림! */
   position: sticky;
@@ -402,6 +415,8 @@ h1.logo::before {
 /* 인박스 높이값 초기화 */
 .spart-menu.inbox {
   height: auto;
+  /* 모바일 화면에서 좁아질때 가로스크롤생성 */
+  overflow-x: auto;
 }
 .spart-menu ul {
   /* 플렉스박스 */
@@ -460,7 +475,6 @@ h1.logo::before {
 
 /***************** 3. 하단영역 *****************/
 .bottom-area {
-
   border-top: 1px solid #ccc;
   padding-top: 20px;
   padding-bottom: 80px;
@@ -493,7 +507,6 @@ h1.logo::before {
 }
 /* 하단로고박스 */
 .footer__logo {
-  
   padding: 20px 0;
 }
 /* 회사주소박스 */
