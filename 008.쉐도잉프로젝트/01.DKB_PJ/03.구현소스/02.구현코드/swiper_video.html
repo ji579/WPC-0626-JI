@@ -36,7 +36,7 @@
         top: 50%;
         translate: 0 -50%;
         width: 80vw;
-     /* aspect-ratio: 5/1;
+        /* aspect-ratio: 5/1;
         -> 여기서 비율주지말고 개별박스인 
         .swiper-slide에 주자! */
         margin: 0 auto;
@@ -54,7 +54,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        /*  */
+        /* 개별박스에 비율주기! */
         aspect-ratio: 5/4;
       }
 
@@ -88,18 +88,18 @@
 
       /* 이전버튼 처음에 숨기기 */
       .btn-prev {
-       opacity: 50%;
+        display: none;
       }
     </style>
   </head>
 
   <body>
-    <!-- Swiper
-         스와이퍼는 3중 박스 구조를 가진다!
+    <!-- Swiper 
+      스와이퍼는 3중 박스 구조를 가진다!
       .swiper(부모박스 이름은 자유!)
         ㄴ.swiper-wrapper(클래스명고정!)
-          ㄴ.swiper-slide (클래스명고정!)
-           -->
+          ㄴ.swiper-slide(클래스명고정!)
+    -->
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
         <!-- 16개의 이미지를 포함한 박스로 구성함 -->
@@ -237,25 +237,24 @@
         console.log("맨처음인가?", swiper.isBeginning);
         console.log("맨끝인가?", swiper.isEnd);
 
-          // 맨처음인가? 맨끝인가?에 따른 분기
+        // 맨처음인가? 맨끝인가?에 따른 분기 //////
         // 1. 맨처음엔 => 이전버튼 비활성화
-        if(swiper.isBeginning) {
-            btnPrev.style.opacity = "50%";
+        if (swiper.isBeginning) {
+          btnPrev.style.display = "none";
         } /// if ////
 
         // 2. 맨끝인가? => 다음버튼 비활성화
-        else if(swiper.isEnd) {
-            btnNext.style.opacity = "50%";
+        else if (swiper.isEnd) {
+          btnNext.style.display = "none";
         } /// else if ////
 
         // 3. 그밖의 경우는 => 이전버튼, 다음버튼 활성화
         else {
-           btnNext.style.display = "inline-block";
-           btnNext.style.opacity = "1";
-            btnPrev.style.display = "inline-block";
-            btnPrev.style.opacity = "1";
+          btnNext.style.display = "inline-block";
+          btnPrev.style.display = "inline-block";
         } /// else ////
       }); ///// slideChange //////
+
       /* 
         [스와이퍼 화면 크기별 슬라이드 개수 조정 예시 소스]
         const swiper = new Swiper('.swiper', {

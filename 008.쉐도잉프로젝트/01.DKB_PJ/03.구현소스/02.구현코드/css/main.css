@@ -15,6 +15,7 @@
 
 /***************** 메인 CSS *****************/
 
+
 /***************** 2-2. 캐릭터영역 *****************/
 .cat-part {
   position: relative;
@@ -27,7 +28,6 @@
   /* 상단마진 */
   margin-top: 10px;
 }
-/* 캐릭터박스 */
 /* 캐릭터박스 */
 .cat-box {
   /* 플렉스박스 */
@@ -121,10 +121,6 @@
 }
 
 /***************** 2-3. 드라마소개영역 *****************/
-.intro-part {
-  height: 500px;
-}
-
 .main .intro-part .partbox {
   height: 455px;
   padding: 10px;
@@ -134,7 +130,7 @@
   padding-bottom: 0;
 }
 
-/* 영역 서브제목 아이콘 가상요소로 지우기 */
+/* 영역 서브제목 아이콘 가상요소 지우기 */
 .intro-part .stit::before {
   display: none;
 }
@@ -208,14 +204,10 @@
 .preview-area {
   min-height: 660px;
 }
+
 /* 영역 서브제목 아이콘 가상요소로 앞에 넣기 */
 .preview-area .stit::before {
-  content: "";
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  margin-right: 20px;
-  vertical-align: middle;
+  background-image: url(../images/icons/icon1.png);
 }
 
 /* 미리보기 컨텐츠 리스트 ul */
@@ -226,16 +218,20 @@
 .preview-area li {
   width: calc((100% - 1.5% * 3) / 4);
   /* 가로크기는 4등분(단, 갭3개의 값을 뺀다!) */
+
   aspect-ratio: 320/270;
   box-shadow: 0 0 10px #ccc;
   /* 보더박스 */
   box-sizing: border-box;
   padding: 24px 20px;
-  cursor: pointer;
-  opacity: 0.8;
-}
 
-/* 미리보기 컨텐츠 리스트 li:hover */
+  /* 커서 손가락 */
+  cursor: pointer;
+
+  /* 투명도 0.6 */
+  opacity: 0.6;
+}
+/* li오버시 투명도 복원 */
 .preview-area li:hover {
   opacity: 1;
 }
@@ -245,13 +241,14 @@
   font-size: 2rem;
   margin-bottom: 14px;
 }
-/*미리보기 내용  */
+/* 미리보기 내용 */
 .preview-area li p {
   font-size: 1.5rem;
   line-height: 1.9;
   color: #555;
   height: 77%;
-  /* 여러줄 말줄임표시 */
+
+  /* 여러줄 말줄임처리 */
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -259,11 +256,14 @@
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
 }
-
 /***************** 2-5. 현장포토영역 *****************/
 .real-part {
+  /* height: 906px; */
 }
-
+/* 영역 서브제목 아이콘 가상요소로 앞에 넣기 */
+.real-part .stit::before {
+  background-image: url(../images/icons/icon2.png);
+}
 /* 현장포토 그리드박스 */
 .live-box ul {
   display: grid;
@@ -332,8 +332,7 @@
   padding-top: 1.4rem;
 }
 /***************** 2-7. 최신동영상영역 *****************/
-.video-part .cont-box{
-
+.video-part .cont-box {
   position: relative;
   /* 부모자격 - 이동버튼의 부모 */
 }
@@ -342,19 +341,22 @@
   /*-> 스와이퍼에서 처리하므로
   flex설정 불필요!
   트랜지션주면 방해됨! 불필요!!!
+
   position: relative;
   left: 0; 
   display: flex;
   transition: left 0.3s ease-out; */
+
+  /* 선택 및 드래그 금지 */
   user-select: none;
   -webkit-user-drag: none;
 }
 
- /* 스와이퍼 리스트 .swiper-slide */
+/* 스와이퍼 리스트 .swiper-slide */
 .clip-box li {
-  /* 플렉스설정 불필요 */
-  /*flex-basis: 25%;
-   flex-shrink: 0; */
+  /*->플렉스 설정 불필요!!! 
+  flex-basis: 25%;
+  flex-shrink: 0; */
   /* 플렉스 gap 속성대신 패딩으로 처리!
     이유는? 드래그시 영역아웃현상때문! */
   /* padding: 0 1.1%;
@@ -442,7 +444,7 @@
   display: inline-block;
 }
 .btn-box.left button:last-child {
-  /* display: none; */
+  display: none;
 }
 /* 오른쪽버튼만 보이기 */
 .btn-box.right button:last-child {

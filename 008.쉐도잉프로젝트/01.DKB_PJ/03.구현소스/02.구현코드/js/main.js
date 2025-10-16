@@ -1,35 +1,5 @@
 // 도깨비 PJ 메인 페이지 JS - main.js /////////
 
-///////////////////////////////////////////////////
-// 1. 큐브로고박스 일정간격으로 클래스 넣었다 빼기 ///
-//////////////////////////////////////////////////
-
-// -> 로고가 일정 간격으로 회전함!
-// 지금은 1.5초씩 alternate하였으므로 총 3초걸림
-
-// 1-1. 대상선정 : .cube-logo
-const cubeLogo = document.querySelector(".cube-logo");
-
-// 1-2. 클래스 셋팅함수 ////////////////
-const setClass = () => {
-  // 클래스넣기
-  cubeLogo.classList.add("rotate-cube");
-
-  // 3초후 클래스 제거하기
-  // setTimeout(함수, 시간);
-  setTimeout(() => {
-    cubeLogo.classList.remove("rotate-cube");
-  }, 3000);
-}; /////////// setClass 함수 //////////
-
-// 1-3. 일정간격으로 클래스 셋팅함수 호출하기 ///////
-// setInterval(함수, 시간);
-// 일정시간 간격으로 함수가 실행됨!
-setInterval(setClass, 10000);
-/// 10초간격으로 실행됨! //////
-
-// 1-4. 처음에 회전하도록 클래스 셋팅함수 호출하기
-setClass();
 
 /************************************************ 
     2. 최신 동영상 파트에 스와이퍼 적용하기
@@ -157,7 +127,7 @@ $gnbList.click(function(){
 $gnbList.find('a').click(e=>e.preventDefault());
 
 // (4) 이전 이동버튼 클릭시 부모 .sub-menu의 클래스 on 제거하기
-$('.btn-up').click(function(e){ // e - 이벤트 전달변수
+$('.btn-up-menu').click(function(e){ // e - 이벤트 전달변수
   // console.log('이전 이동버튼 클릭');
   // 클릭된 버튼의 부모들중 .sub-menu에 클래스 on 제거
   $(this).parents('.sub-menu').removeClass('on');

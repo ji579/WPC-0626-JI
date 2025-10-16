@@ -18,7 +18,6 @@
 */
 
 
-
 /********* 공통 클래스 *********/
 /* 임시표시타이틀 */
 .temp-tit{
@@ -74,7 +73,6 @@
     font-weight: normal;
 }
 
-
 /* 공통 서브타이틀 아이콘 가상요소 */
 .stit::before {
   content: "";
@@ -83,7 +81,7 @@
   height: 40px;
   margin-right: 20px;
   vertical-align: -6px;
-  background: url(../images/icons/Asset\ 5.png) no-repeat center/cover;
+  background: url(../images/icons/icon1.png) no-repeat center/cover;
 }
 
 /* IR(Images Replacement) 
@@ -118,5 +116,6 @@
     background-color: #ddd;
     border-radius: 5px;
 }
+
 
 
