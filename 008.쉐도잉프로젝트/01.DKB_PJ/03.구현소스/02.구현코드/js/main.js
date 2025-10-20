@@ -1,9 +1,103 @@
 // 도깨비 PJ 메인 페이지 JS - main.js /////////
 
+// 도깨비 데이터 불러오기 ////
+import { previewData, catData } from "../data/dkb_data.js";
+console.log(catData);
 
+// 스크롤액션 불러오기 /////
+import scrollAction from "./scroll_action.js";
+scrollAction();
+
+/************************************************ 
+    1. 미리보기 데이터 바인딩 하기
+************************************************/
+// 데이터를 요소에 넣어서 화면에 출력하는 것을
+// 데이터 바인딩 이라고 한다!
+// (1) 바인딩 대상 : .preview-box ul.cont-box
+const previewArea = 
+document.querySelector('.preview-area ul.cont-box');
+console.log(previewArea);
+// (2) 바인딩 데이터 : previewData (import됨!)
+// (3) 반복 구조
+/* 
+<li>
+    <h3>제목</h3>
+    <p>내용</p>
+  </li>
+*/
+// (4) 데이터 바인딩 하기 map().join('') ////
+// 배열.map((배열값,순번)=>리턴값) -> 새로운배열 생성!
+previewArea.innerHTML = previewData.map(v=>`
+  <li>
+    <h3>${v.title}</h3>
+    <p>${v.story}</p>
+  </li> 
+`).join('');
 
 /************************************************ 
     2. 최신 동영상 파트에 스와이퍼 적용하기
+************************************************/
+// 바인딩 대상 : .cat-box
+const catBox = 
+document.querySelector('.cat-box');
+console.log(catBox);
+
+// 데이터 구조
+/* 
+<!-- 공유박스 -->
+<div>
+  <!-- 이미지박스 -->
+  <figure>
+    <img src="./images/dc1.png" alt="공유" />
+    <figcaption>
+      <img src="./images/d01.png" alt="도깨비진한글자" />
+      <img src="./images/d011.png" alt="도깨비흐린글자" />
+    </figcaption>
+  </figure>
+  <!-- 글박스 -->
+  <aside class="scbar">
+    <!-- 타이틀 -->
+    <h3>도깨비(김신), 939세</h3>
+    <!-- 내용 -->
+    <p></p>
+  </aside>
+</div>  
+*/
+catBox.innerHTML = catData.map(v=>`
+  <!-- ${v.actorName}박스 -->
+<div>
+  <!-- 이미지박스 -->
+  <figure>
+    <img src="./images/dc${v.idx}.png" alt="${v.actorName}" />
+    <figcaption>
+      <img src="./images/d0${v.idx}.png" alt="${v.actorName}진한글자" />
+      <img src="./images/d0${v.idx+v.idx}.png" alt="도깨비흐린글자" />
+    </figcaption>
+  </figure>
+  <!-- 글박스 -->
+  <aside class="scbar">
+    <!-- 타이틀 -->
+    <h3>${v.catTitle}</h3>
+   <!-- 내용 -->
+    <p>${v.catContent.replace(/\n/g,'<br/>')}</p>
+  </aside>
+</div>  
+  `).join('');
+
+  // [ 기존 캐릭터 소개글에서 엔터부분에 br태그 넣기 ]
+  // 문자열.replace(바꿀문자열,바뀔문자열)
+  // -> 이렇게 하면 문자 하나만 변경되므로
+  // 정규식을 사용해서 선택해야 모두 변경된다!
+  // -> .replace(/선택문자열/g,'바뀔문자열')
+  // -> 정규식은 슬래쉬 사이에 씀
+  // -> 정규식 슬래쉬 뒤에 g문자는 global(전체)라는 의미
+  // -> 그러면 모두 찾아서 변경함
+  // -> \n은 엔터기호를 찾아냄
+  // .replace(/\n/g,'<br/>')
+
+
+/************************************************ 
+    3. 최신 동영상 파트에 스와이퍼 적용하기
 ************************************************/
 const videoSwiper = new Swiper(".clip-box", {
   // 자동플레이설정
