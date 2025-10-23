@@ -18,10 +18,11 @@ console.log(myFn);
  7. 글자 등장 시점에 해당 스타일 클래스에 
     on 클래스를 더해준다!
 
-        [ 추가 미션 ]
+    [ 추가 미션 ]
      1. html에 .stage-letters 박스하나 더추가
      2. myText 배열에 글자 하나 더 추가
      3. .style4 클래스를 추가하여 다른 스타일로 등장하기
+     -> .style4와 .style4.on을 CSS에 추가하기
 ************************************************/
 
 // 2. 등장할 글자를 배열에 미리 셋팅한다.
@@ -29,7 +30,7 @@ const myText = [
   "너의 췌장을 먹고싶어🐷",
   "추락하는 것은 날개가 있다🦅",
   "뻐꾸기 둥지 위로 날아간 새🐓",
-  "해피비트 펭귄 🐧",
+  "누구를 위하여 종은 울리나🔔",
 ];
 
 // 박스 대상 : .stage-letters
@@ -41,25 +42,24 @@ stage.forEach((el,idx)=>{
     // el - 각 박스요소, idx - 순번
     // 순번은 배열의 글자 순번으로 사용!
     console.log(el, idx);
-    //각 박스에 글자넣기
+    // 각 박스에 글자넣기
     el.innerHTML = wrapSpan(myText[idx]);
     // console.log(wrapSpan(myText[idx]));
 
-    //6. 셋팅 스타일 클래스를 넣어준다.
-    //순서대로 .style1, .style2, .style3
+    // 6. 해당 등장 스타일 클래스를 넣어준다.
+    // 순서대로 .style1, .style2, .style3
     el.classList.add(`style${idx+1}`);
 
-        // 7. 글자 등장 시점에 해당 스타일 클래스에
+    // 7. 글자 등장 시점에 해당 스타일 클래스에
     // on 클래스를 더해준다!
     // setTimeout(함수, 시간)
-       setTimeout(() => {
+    setTimeout(() => {
         el.classList.add("on");
-    }, 1000*(idx+1));
+    }, 1000 * (idx+1)); // 1,2,3초
 }); // forEach ////
 
 // 4. 글자는 한글자씩 잘라서 span태그로 감싼다.
 // 5. span은 트랜지션 지연시간을 셋팅한다.
-
 // 글자를 span으로 감싸는 함수 ////
 function wrapSpan(txt){
     // 함수호출확인 및 전달값 확인
@@ -83,14 +83,14 @@ function wrapSpan(txt){
         else {
             result += `
             <span 
-            style="transition-delay:${delayTime*.08}s"
+            style="transition-delay:${delayTime*0.08}s"
             >${x}</span>
             `;
 
-                  // 지연시간 0.08초씩 증가하기(-> else밖에다 하면 
-                  // 띄어쓰기에도 지연시간이 들어가져서 else 안에다 넣기)
+            // 지연시간 0.08초씩 증가하기
             delayTime++;
         } /// else ////
+
     } // for of ////
 
     // 결과값 리턴하기 (호출한 곳으로 값을 돌려보냄!)

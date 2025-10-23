@@ -89,21 +89,18 @@ body {
     /* 투명도 0 */
     opacity: 1;    
 }
-.style4{
-    /* 원근설정 */
-    perspective: 100vh;
-}
+
+/* 글자등장 스타일4 */
 .style4 span{
-    transform: rotateX(90deg);
-    transform-origin: bottom;
+    rotate: 720deg;
     /* 투명도 0 */
     opacity: 0;    
     /* 트랜지션: 속시이지 */
-    transition: 0.3s ease-in;
+    transition: 0.5s cubic-bezier(0.07, 1.13, 0.95, 1.37);
 }
 /* 등장클래스 .on */
 .style4.on span{
-    transform: rotateX(0deg);
+    rotate: 0deg;
     /* 투명도 0 */
     opacity: 1;    
 }

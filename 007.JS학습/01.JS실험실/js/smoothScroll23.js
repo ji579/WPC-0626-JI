@@ -1,82 +1,98 @@
-// JS실험실 : 04.스크롤액션 JS
+// Smooth Scroll JS Verson 2023.09
+// 부드러운 스크롤 2020.12 초기버전
+// 부드러운 스크롤 2023.09 수정버전
+// 부드러운 스크롤 2024.04 변수선언개정
+// arranged by Tom Brace Parker
 
-// 나의 함수 불러오기
-import myFn from "./my_function.js";
+// startSS()함수를 호출하여 사용
+export default function startSS() {
+  // 전체 스크롤 대상일때 document를 보냄
+  new SmoothScroll(document, 30, 30);
+  // 특정박스일 경우 document.querySelector(선택요소)를 씀!
+  // new SmoothScroll(document.querySelector('.wrap'), 60, 12)
+}
 
-// 글자등장 함수 불러오기
-import callLetter from "./call_letter.js";
+// 전역변수 스크롤 위치값
+let scrollPos;
+// -> 다른 코딩으로 스크롤 이동시 이 변수에 일치필요!!!
 
-// console.log(callLetter);
+function SmoothScroll(scrollTarget, speed, smooth) {
+  // scrollTarget - 대상요소, speed - 스크롤애니속도, smooth - 부드러운정도
+  if (scrollTarget === document)
+    scrollTarget =
+      document.scrollingElement ||
+      document.documentElement ||
+      document.body.parentNode ||
+      document.body; // cross browser support for document scrolling
 
-// 부드러운 스크롤 함수 불러오기
-import startSS from "./smoothScroll23.js";
+  let moving = false;
+  scrollPos = scrollTarget.scrollTop;
+  let frame =
+    scrollTarget === document.body && document.documentElement
+      ? document.documentElement
+      : scrollTarget; // safari is the new IE
 
-// 부드러운 스크롤 함수호출
-startSS();
+  // 최신 통합 이벤트
+  scrollTarget.addEventListener("wheel", scrolled, {
+    passive: false,
+    // 기본기능 막기시 에러발생방지
+    // window, document, body 일경우 에러발생함!
+  });
+  // 구 이벤트
+  scrollTarget.addEventListener("mousewheel", scrolled, {
+    passive: false,
+  });
+  // 파이어폭스 이벤트
+  scrollTarget.addEventListener("DOMMouseScroll", scrolled, {
+    passive: false,
+  });
 
+  function scrolled(e) {
+    e.preventDefault(); // disable default scrolling
 
-// 글자등장함수 호출하기
-callLetter(".stage", "신카이 마코토", 1500);
+    let delta = normalizeWheelDelta(e);
 
-/**************************************************** 
-    [ 스크롤 이벤트를 활용한 요소 등장액션 기능구현하기 ]
+    scrollPos += -delta * speed;
+    scrollPos = Math.max(
+      0,
+      Math.min(scrollPos, scrollTarget.scrollHeight - frame.clientHeight)
+    ); // limit scrolling
 
-  1. 사용 이벤트 : scroll
-  -> 스크롤 바가 있는 페이지에서 또는 부분박스에서
-  스크롤 바가 이동할때 발생하는 이벤트
-  -> 주의: wheel 이벤트와는 다르다! 무엇이?
-  스크롤바가 이동하지 않아도 마우스 휠이 작동될때 발생한다!
-  (휠이벤트는 모바일에서 사용불가!)
+    if (!moving) update();
+  }
 
-  2. 스크롤바 위치값 알아내기 : 세로방향(Y축)
-    (1) window.scrollY (IE6~11지원안함)
-    (2) document.scrollingElement.scrollTop
-    (3) document.documentElement.scrollTop
-    (4) document.querySelector('html').scrollTop
-    -> 가로방향 스크롤바는 Y대신 X라는 문자를 사용함!
+  function normalizeWheelDelta(e) {
+    if (e.detail) {
+      if (e.wheelDelta)
+        return (
+          (e.wheelDelta / e.detail / 40) * (e.detail > 0 ? 1 : -1)
+        ); // Opera
+      else return -e.detail / 3; // Firefox
+    } else return e.wheelDelta / 120; // IE,Safari,Chrome
+  }
 
-  3. 스크롤 등장 대상요소의 보이는 화면에서의 top값
-    getBoundingClientRect().top
-    -> 보이는 화면상단을 기준으로 이것보다 위로 갈경우
-    마이너스값을 리턴한다!
-    -> 기준: 보이는 화면크기를 기준하면 된다!
-    -> 윈도우화면 전체: window.innerHeight
-    예) 화면의 3/2는 window.innerHeight/3*2
-    예) 화면의 4/3는 window.innerHeight/4*3
+  function update() {
+    moving = true;
 
-    ((메서드명 조어 분석))
-    getBoundingClientRect()
-    get 가져와라
-    Bounding 경계선 (->바운딩박스 - 경계선을 가지는 직사각형박스)
-    Client 보이는 화면
-    Rect 사각형
+    let delta = (scrollPos - scrollTarget.scrollTop) / smooth;
 
-    ->>> BouningClientRect 
-    -> 보이는 화면 사각형 경계선으로 부터의 거리를
-     리턴해주는 메서드
-     -> 상단으로 부터의 거리는 top속성
-     -> 왼쪽으로 부터의 거리는 left속성
-     공통적으로 경계선 아래쪽은 양수, 윗쪽은 음수
+    scrollTarget.scrollTop += delta;
 
-****************************************************/
+    if (Math.abs(delta) > 0.5) requestFrame(update);
+    else moving = false;
+  }
 
-// 1. 대상선정 :
-// (1) 이벤트 대상 : window
-// (2) 변경대상 : .scroll-act
-const scrollAct = myFn.qsa(".scroll-act");
-// (3) 변경대상 : .tit
-const tit = myFn.qs(".tit");
-// 타이틀요소에 트랜지션
-tit.style.transition = ".4s ease-in-out";
-
-// console.log("대상:", scrollAct,tit);
-
-// 스크롤 등장요소의 위치값 담기
-// offsetTop은 맨위에서 부터 요소의 위치값
-// 배열변수에 순서대로 담는다!
-const posEl = [];
-scrollAct.forEach((el, idx) => (posEl[idx] = el.offsetTop));
-
-console.log("위치값:", posEl);
-
-// 2. 이벤트 설정하기 ////////
+  const requestFrame = (function () {
+    // requestAnimationFrame cross browser
+    return (
+      window.requestAnimationFrame ||
+      window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame ||
+      window.oRequestAnimationFrame ||
+      window.msRequestAnimationFrame ||
+      function (func) {
+        window.setTimeout(func, 1000 / 50);
+      }
+    );
+  })();
+}
