@@ -1,0 +1,353 @@
+@charset "utf-8";
+/* 서브 페이지 CSS - sub.css */
+
+/* 공통 외부 CSS 불러오기 */
+/* @import url(경로/파일명); */
+
+/* 상단 하단 공통모듈 */
+@import url(./common.css);
+
+@import url(./core.css);
+/* 초기화CSS */
+@import url(./reset.css);
+
+/* 공사중 표시 */
+body * {
+  outline: 2px dashed #ccc;
+}
+
+/***************** 메인 CSS ********************/
+/* 제목파트 */
+.tit3 .inbox {
+  max-width: 1360px;
+}
+/* 하위메뉴 호버시 */
+.line1 > a:hover {
+  color: #c52531;
+  font-weight: bold;
+}
+
+.line1 a.active {
+    color: #c52531;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+
+.line1 {
+  display: flex;
+  height: 30px;
+  border-bottom: 2px solid #b3b3b5;
+  align-items: center;
+  gap: 18px;
+  font-size: 1.6rem;
+  padding-left: calc(100% /12);
+}
+
+.line2 {
+  height: 30px;
+  border-bottom: 2px solid #b3b3b5;
+  align-content: center;
+  padding-left: calc(100% /12);
+}
+
+.link-label {
+    cursor: pointer; /* 클릭 가능한 요소임을 표시 */
+    display: block; /* 전체 영역 클릭을 위해 필요할 수 있음 */
+}
+.link-label a {
+    text-decoration: none; /* a 태그의 밑줄 제거 */
+    color: inherit; /* 부모 요소의 글자색 상속 */
+    /* 원하는 스타일링 추가 */
+}
+.line2 img {
+  margin-left: 5px;
+}
+.line2 a {
+  margin-right: 5px;
+}
+/* input 요소를 숨겨도 작동은됨! */
+input[type="radio"] {
+  display: none; 
+}
+
+.check {
+  display: flex;
+  position: relative;
+}
+
+/* 라벨요소 */
+label {
+      font-size: 1.4rem;
+  display: flex;
+  gap: 5px;
+  line-height: 1.5;
+  cursor: pointer;
+  margin-right: 13px;
+  /* 텍스트와 가상요소 순서를 맞추기 위해 flex-direction: row-reverse 적용 권장 */
+  /* flex-direction: row-reverse; */ 
+}
+
+/* 동그라미 크기 설정 */
+label::after {
+  content: '';
+  width: 11px;
+  height: 11px;
+  margin-top: 4px;
+  border-radius: 50%;
+  border: 1px solid rgb(0, 0, 0);
+  display: inline-block;
+}
+
+/* 라디오 버튼 체크시 라벨 변경 */
+/* 체크된 라디오버튼의 다음 형제 라벨요소선택 */
+input:checked + label::after {
+  background: #c52531;
+}
+
+input:checked + label {
+  color: #c52531;
+}
+/* 라디오버튼 체크시
+        하단 형제요소인 ul>li 변경하기 */
+/* 체크박스/라디오버튼 체크시
+        가상클래스는 :checked 
+        -> 틸드(~) 선택자는 형제요소들을 모두
+        찾아 해당 요소를 선택함!
+        */
+
+
+.line3 {
+  font-size: 3.6rem;
+  text-align: center;
+  align-content: center;
+  height: 85px;
+  border-bottom: 2px solid #b3b3b5;
+  margin-bottom: 35px;
+}
+/* ////////////////////////////////////////// */
+
+.main-area {
+  /* position: relative; */
+  max-width: 1360px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.change > ul {
+  margin-top: 30px;
+  margin-bottom: 50px;
+  display: flex;
+
+  justify-content: center;
+}
+
+.row , .col {
+  position: relative; /* 자식 이미지의 절대 위치 기준점 */
+  width: 38px; /* 이미지의 실제 너비에 맞춰 조정 */
+  height: 38px; /* 이미지의 실제 높이에 맞춰 조정 */
+}
+
+/* 3. 모든 이미지에 적용: 겹쳐 놓기 및 부드러운 전환 효과 */
+.row img, .col img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.3s ease; /* 투명도 전환 시 0.3초 동안 부드럽게 */
+}
+
+/* 4. 호버 이미지 숨기기 (기본 상태) */
+.hover-row, .hover-col
+ {
+  opacity: 0; /* 평소에는 투명하게 숨김 */
+}
+
+/* 5. 호버 시 이미지 전환 */
+.row:hover .default-row,
+.col:hover .default-col {
+  opacity: 0; /* 기본 이미지를 투명하게 만들어서 숨김 */
+}
+
+.row:hover .hover-row,
+.col:hover .hover-col{
+  opacity: 1; /* 호버 이미지를 보이게 함 */
+}
+
+
+.wrap {
+  max-width: 1114px;
+  margin: 0 auto;
+}
+
+/* 내부 플렉스박스 */
+.exbsbox {
+  display: flex;
+  /* width: calc((100% - -97.5vh * 3) / 4); */
+  /* 랩핑박스 - 줄바꿈됨 */
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 0 35px;
+  overflow: hidden;
+}
+
+.wrap ul {
+  /* 한줄에 3개 오는 설정값을 찾음 */
+  /* width: calc((100% - 4.5vh*3) / 4); */
+  aspect-ratio: 250 / 540;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-end; */
+  align-items: center;
+  box-sizing: border-box;
+  gap: 56px;
+}
+
+
+.exb {
+  width: 250px;
+  height: 365px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+/* .list를 호버하면 .exb>img filter:brightness(0.5)적용
+ */
+.list:hover .exb>img{
+  filter: brightness(0.5);
+  z-index: 99999;
+}
+
+.list {
+  position: relative;
+  /* 부모자격 */
+}
+.list::after {
+  content: "";
+  position: absolute;
+  top: 400px;
+  /* width: 1140px; */
+ width: 249%;
+  height: .5px;
+  z-index: 999;
+  background-color: black;
+}
+/* 이미지태그를 배경처럼 넣기 */
+.wrap img {
+  max-width: 250px;
+  height: 365px;
+  border: 1px solid #d9d9d9;
+  object-fit: cover;
+}
+
+.exbtxt {
+  width: 250px;
+}
+.wrap h3 {
+  font-size: 1.8rem;
+  max-width: 250px;
+  min-height: 70px;
+  text-overflow: ellipsis;
+  text-align: left;
+  word-break: break-all;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+}
+.wrap h4 {
+
+  padding: 25px 0;
+  font-size: 1.6rem;
+  max-width: 250px;
+
+  text-align: left;
+  word-break: break-all;
+  color: #808080;
+}
+
+/* .opacity {
+  width: 100%;
+  height: 250px;
+  position: fixed;
+  bottom: 0;
+  z-index: 9999;
+  background: #ffffff;
+  opacity: 0.6;
+  filter: blur(5px);
+} */
+main::after {
+  content: "";
+  width: 100%;
+  left: 0;
+  height: 250px;
+  position: fixed;
+  bottom: 0;
+  background: linear-gradient(180deg, transparent 0%, #fff 85%);
+  opacity: 1;
+  transition: all 0.3s;
+  z-index: 9999;
+}
+main.end:after {
+  height: 2vw;
+  opacity: 0;
+}
+.ubtn {
+  margin: 38px 0;
+  text-align: center;
+}
+section#upBtn {
+    margin: 0 auto;
+    width: 38px;}
+.image-wrapper {
+    position: relative; /* 자식 이미지의 절대 위치 기준점 */
+    width: 38px; /* 이미지의 실제 너비에 맞춰 조정 */
+    height: 38px; /* 이미지의 실제 높이에 맞춰 조정 */
+}
+
+/* 3. 모든 이미지에 적용: 겹쳐 놓기 및 부드러운 전환 효과 */
+.image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s ease; /* 투명도 전환 시 0.3초 동안 부드럽게 */
+}
+
+/* 4. 호버 이미지 숨기기 (기본 상태) */
+.hover-arrow {
+    opacity: 0; /* 평소에는 투명하게 숨김 */
+}
+
+/* 5. 호버 시 이미지 전환 */
+.image-wrapper:hover .default-arrow {
+    opacity: 0; /* 기본 이미지를 투명하게 만들어서 숨김 */
+}
+
+.image-wrapper:hover .hover-arrow {
+    opacity: 1; /* 호버 이미지를 보이게 함 */
+}
+      /* 이거 추가한거 */ 
+.page-row .hover-row {
+  opacity: 1;
+}
+.page-row .default-row {
+  opacity: 0;
+}
+
+.page-col .hover-col {
+  opacity: 1;
+}
+.page-col .default-col {
+  opacity: 0;
+}
+
+body.page-col .line1 a[href="sub3-2-1exh.html"],
+body.page-row .line1 a[href="sub3-2-1exh.html"] {
+  color: #c52531;
+  font-weight: bold;
+}
