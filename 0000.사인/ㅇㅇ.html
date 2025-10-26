@@ -47,15 +47,16 @@ MakeWorkList() 함수로 현재 페이지에 맞는 작품 리스트를 동적�
 
 
 //////////////////////////////////////////////////////////////////////////////
-표지
+
+000 표지
 2025 웹퍼블리셔 과정
 프로젝트 발표
 반응형 웹사이트
 Modern E-commerce UI/UX Design
 발표자: 강지희
-2025.10
+2025.07.18 ~ 2025.10.27
 
-목차
+00 목차
 01 프로젝트 개요
 02 분석 단계
 03 설계 단계
@@ -77,12 +78,13 @@ Modern E-commerce UI/UX Design
 UI/UX 디자인 & 퍼블리싱
 
 3. 구현 페이지
-main 페이지 ( 간단한 소개 텍스트 + 영상 썸네일 또는 이미지 + ‘더 보기’ 버튼)
-Profile 페이지  (프로필 이미지 + 이름/소개 텍스트 + 스크롤 등장 애니메이션)
-Visit 페이지 → 방문 안내 정보(주소, 지도) + 관람 시간, 입장료 정보 + 이미지/아이콘 활용 + 간단한 안내 텍스트
-Works (그림, 책) 목록 페이지 (작품 그리드 레이아웃 + 페이지네이션UI + 모달 팝업 UI + 동적 콘텐츠 렌더링)
- Museum 페이지 (전시회 카드 그리드 레이아웃 + 모달 팝업 UI )
- contact 페이지 (입력 폼 중심 레이아웃 + 제출 버튼 )
+1) main 페이지 ( 간단한 소개 텍스트 + 영상 썸네일 또는 이미지 + ‘더 보기’ 버튼)
+2) Profile 페이지  (프로필 이미지 + 이름/소개 텍스트 + 스크롤 등장 애니메이션)
+3) Works (그림, 책) 목록 페이지 (작품 그리드 레이아웃 + 페이지네이션UI + 모달 팝업 UI + 동적 콘텐츠 렌더링)
+4)  Museum 페이지
+- visit 페이지(방문 안내 정보(주소, 지도) + 관람 시간, 입장료 정보 + 이미지/아이콘 활용 + 간단한 안내 텍스트)
+- Exhibition 페이지 (전시회 카드 그리드 레이아웃 + 모달 팝업 UI )
+ 5) contact 페이지 (입력 폼 중심 레이아웃 + 제출 버튼 )
 반응형 디자인 (Mobile, Tablet, Desktop)
 
 4. 사용기술
@@ -122,7 +124,8 @@ Figma
                Exhibition 페이지-> Currentexhibition페이지, Pastexbition페이지
 -Contact 페이지 
 
-2.레이아웃 구조<body>
+2.레이아웃 구조 <body>
+ 1) Main, Contact 페이지
 │
 ├─ header.top                → 상단 헤더 + 배너(인트로 영역)
 │   ├─ top-area              → 로고, 작가명, 좌우 텍스트
@@ -138,6 +141,68 @@ Figma
 │
 └─ #bottom-area              → 푸터 (저작권 + SNS)
 
+2) Profile
+Header  ──────┐
+Main    ──────┤   → Profile section
+Books   ──────┤   → Swiper: 작가 연대기 슬라이드
+Footer  ──────┘   → 하단 정보 (작가명, SNS)
+
+3) Works - Paintings, Books
+Header  ──────┐
+Main    ──────┤  → Paintings section /Books section
+               ├     → 검색 폼(Search form)
+               ├     → Modal: 책 상세 정보
+               ├     → Books에만 해당 Swiper: 책 이미지 슬라이드
+               ├     → 화살표 이동 버튼, 페이지네이션(dot)
+Footer  ──────┘  → 하단 정보 (작가명, 저작권, SNS))
+
+4) Museum - Visit(visitinfo, Facilities, about), Exhibition(Current exhibition, Past exhibition)
+
+Header  ──────┐
+Main    ──────┤  → Visit Information section
+               ├     → Line1: Visit / Exhibition 탭
+               ├     → Line2: Radio 버튼 메뉴 (하위메뉴)
+               ├     → Line3: 현재 페이지 제목
+
+               │ <visitinfo>
+               ├     → Google Map (iframe)
+               ├     → Info-box
+               │       ├ Address + COPY 버튼 / Google Map 버튼
+               │       ├ Admission Charges (요금)
+               │       ├ Open / Hours / Closed 정보
+               │       ├ Access (지하철, 버스 이용 안내)
+               │       └ Note (예매, 유의사항 등)
+               │<Facilities>
+               ├     → Floor Map
+               │       ├ 층 리스트 (5F~B1F)
+               │       ├ 각 층별 이미지 (mapwrap / 층별 도면)
+               │       ├ 안내 문구
+               │       │   - All floors are wheelchair accessible.
+               │       │   - Accessible toilet and baby changing station on MB1 floor.
+               │       └ (JS) 클릭 시 층별 이미지 전환, 활성화 효과
+               │
+               └     → 기본 활성층: 5F
+                │
+               │<Current Exhibition>
+               ├     → Exhibition section
+               │       └ 이미지 + 전시 제목 + “Read more” 버튼
+             │       ├ 　Modal → 전시 상세 정보, 이미지, 설명, 전시 일정 및 관람 안내
+               │ <Past Exhibition 가로버전>
+               ├     → View selector → 가로/세로 전시 선택 버튼
+               │       ├ Swiper → 전시 소개 슬라이드
+               │       └ 　Modal → 전시 상세 정보, 이미지, 설명, 전시 일정 및 관람 안내
+
+               │<Past Exhibition 세로버전>
+               ├     → View selector → 가로/세로 전시 선택 버튼
+               │       ├ Wrap section → 전시 콘텐츠 영역
+               │       ├ 　Modal → 전시 상세 정보, 이미지, 설명, 전시 일정 및 관람 안내
+               │       └ 　Scroll-to-top button → 위로 올리기 버튼
+               └   
+            
+               └     → Scroll to top 버튼 (위로가기)
+Footer  ──────┘  → 하단 정보 (작가명, 저작권, SNS)
+
+
 3.정보 구조
 • 카테고리 분류 체계
 • 컴포넌트 재사용 설계
@@ -148,3 +213,38 @@ Figma
 디자인컨셉 : 쿠사마 야요이 작가의 독특하고 창의적인 예술 세계를 반영한 현대적이고 미니멀한 디자인,그리드 기반 구조 / 정돈된 배열,컨텐츠 중심 & 기능 단순화
 컬러시스템 : primary -> #c52531 강조, 쿠사마야요이의 대표 색상; secondary, text -> #ffffff, #000000 본문, 제목, 배경
 타이포그래피 : HCR Batang : 제목 , Instrument Sans :본문, 설명 텍스트
+
+05. 와이어프레임
+와이어프레임 이미지 삽입
+데스크탑 1360px 기준 
+Tablet
+768px 기준
+Mobile 360px 기준
+
+06. 피그마 프로토타입
+
+1 인터랙션 설계
+-버튼 클릭 시- 버튼 색이 바뀐다, 다른 페이지로 이동한다
+-호버효과 - 메뉴 박스 호버시 이미지 확대되는 애니
+-스크롤- 배너영역을 내려가면 스크롤할 때 메뉴가 보임
+
+2. 컴포넌트
+- 버튼 스타일
+- 카드 UI
+- 폼 요소
+-모달/팝업
+
+3. 프로토타임
+-클릭플로우
+-인터랙션(Interaction) 설정
+-전환 효과(Transition & Animation)
+
+
+전시/
+
+
+07. HTML 마크업
+시맨틱태그 : <header> <nav> <main> <section> <article> <footer> 사용
+    웹접근성: <h1><h2><alt><video> 속성 적용
+        SEO 최적화: 페이지 구조를 <h1>~<h2>로 의미 있게 나눔 링크와 이미지에 적절한 anchor text와 alt 속성을 사용해 
+             콘텐츠 구조화 중심 SEO
