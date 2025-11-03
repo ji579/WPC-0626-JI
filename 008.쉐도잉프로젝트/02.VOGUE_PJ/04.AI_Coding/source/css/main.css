@@ -80,53 +80,134 @@ header {
   color: #e74c3c;
 }
 
-/* ========== 히어로 섹션 ========== */
+/* ========== 히어로 섹션 Swiper 스타일 ========== */
 .hero {
   position: relative;
   width: 100%;
   /* height: 600px; */
-  aspect-ratio: 2.15;
+  /* 가로세로 비를 만든다! */
+  aspect-ratio: 2.1;
   overflow: hidden;
   background: linear-gradient(135deg, #d4e6f1, #fce4ec);
 }
 
+.heroSwiper {
+    width: 100%;
+    height: 100%;
+      object-fit: cover;
+}
+
+.swiper-slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+     background: #222;
+}
+
 .hero-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .hero-text {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  white-space: nowrap;
-  color: #fff;
-  padding: 15vh 0 5vh;
-
-  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
-}
-
-.hero-text h1 {
-  font-size: 48px;
-  font-weight: 400;
-  margin-bottom: 10px;
-  letter-spacing: 2px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    color: #fff;
+    padding: 15vh 0 5vh;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
 }
 
 .hero-text p {
-  font-size: 17px;
-  font-weight: 400;
-  margin-bottom: 20px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.hero-text h1 {
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 1.3;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Swiper 버튼 커스터마이징 */
+.swiper-button-prev,
+.swiper-button-next {
+    color: white !important;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+    font-size: 20px;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+/* Swiper 페이지네이션 커스터마이징 */
+.swiper-pagination {
+    bottom: 20px !important;
+}
+
+.swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: white !important;
+    opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: white !important;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .hero {
+        height: 400px;
+    }
+    
+    .hero-text {
+        bottom: 40px;
+        left: 20px;
+        right: 20px;
+    }
+    
+    .hero-text h1 {
+        font-size: 24px;
+    }
+    
+    .swiper-button-prev,
+    .swiper-button-next {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .swiper-button-prev:after,
+    .swiper-button-next:after {
+        font-size: 16px;
+    }
 }
 
 /* ========== 컨텐츠 섹션 공통 ========== */
-main {
+
+
+/* 메인 직계 하위 section */
+main > section {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 60px 40px;
+  margin-top: 120px !important;
+  padding: 0 40px;
 }
 
 section {
@@ -232,10 +313,20 @@ section {
 }
 
 /* ========== PEOPLE NOW 섹션 ========== */
+#people{/* 겉박스 최대크기, 마영오 해제 */
+  max-width: none;
+  margin: 0;
+  padding: 40px;
+    background-color: #f4f4f4;
+}
 .people-grid {
+    /* 속박스에 최대크기, 마영오 설정 */
+  max-width: 1400px;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+
 }
 
 .people-card {
@@ -245,6 +336,12 @@ section {
   border-radius: 8px;
 }
 
+/* 피플카드의 타이틀 */
+.people-card .section-header {
+  flex-direction: column;
+  align-items: start;
+  border-bottom: none;
+}
 .people-card img {
   width: 100%;
   height: 100%;
@@ -707,3 +804,12 @@ footer {
   font-size: 12px;
   color: #999;
 }
+
+/* lastest-stories 파트 */
+.latest-stories-box {
+    display: grid;
+  grid-template-columns: repeat( 1, 3fr 1fr);
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
