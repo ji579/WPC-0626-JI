@@ -303,7 +303,6 @@ const arrString = ["파", "타", "하", "가", "바", "사", "다", "라", "차"
 //   arrNumber.sort((a, b) => (a == b ? 0 : a > b ? -1 : 1))
 // );
 
-
 // [1] 숫자로만된 배열의 정렬 ///////////////////////////
 
 // [1-1] 출력대상 : .showNum
@@ -314,37 +313,39 @@ const showNum = document.querySelector(".showNum");
 console.log("숫자배열원본:", arrNumber);
 
 // [1-3] 현재 숫자배열 출력하기 함수 //////
-const showNumFn = (newArray) => { // newArray: 전달된 배열
-    // 배열데이터만큼 숫자 이미지를 만들어서 화면에 출력하기
-    // 순서: 먼저 출력요소에 html넣기 셋팅후
-    // 이퀄 오른쪽에서 배열만큼 map을 돌아서 코드를 생성한다!
-  showNum.innerHTML = newArray.map(
-    (v) => `
+const showNumFn = (newArray) => {
+  // newArray: 전달된 배열
+  // 배열데이터만큼 숫자 이미지를 만들어서 화면에 출력하기
+  // 순서: 먼저 출력요소에 html넣기 셋팅후
+  // 이퀄 오른쪽에서 배열만큼 map을 돌아서 코드를 생성한다!
+  showNum.innerHTML = newArray
+    .map(
+      (v) => `
     <img src="./images/num/num_0${v}.png" 
-    alt="숫자이미지">`).join("");
+    alt="숫자이미지">`
+    )
+    .join("");
 }; ////////////////// showNumFn함수 /////////////////
 
 // 기본 숫자배열로 화면출력함수 최초호출하기
 showNumFn(arrNumber);
 
 // [1-4] 숫자정렬 선택박스 변경시 실행함수 /////////
-document.querySelector('#sel')
-.addEventListener('change', function(){
-    // 선택된 선택박스의 value값
+document.querySelector("#sel").addEventListener("change", function () {
+  // 선택된 선택박스의 value값
   const selValue = this.value;
 
   // console.log('선택값:', selValue);
 
-  if(selValue == 1){
+  if (selValue == 1) {
     // 오름차순 정렬
-    arrNumber.sort((a,b)=>a==b?0:a<b?-1:1);
-  }else if(selValue == 2){
+    arrNumber.sort((a, b) => (a == b ? 0 : a < b ? -1 : 1));
+  } else if (selValue == 2) {
     // 내림차순 정렩
-    arrNumber.sort((a,b)=>a==b?0:a>b?-1:1);
+    arrNumber.sort((a, b) => (a == b ? 0 : a > b ? -1 : 1));
   }
   showNumFn(arrNumber);
 }); /////////////// 숫자정렬 선택박스 변경시 실행함수 //
-
 
 // [2] 문자로만된 배열의 정렬 ///////////////////////////
 
@@ -356,31 +357,143 @@ const showNum2 = document.querySelector(".showNum2");
 console.log("문자배열원본:", arrString);
 
 // [2-3] 현재 문자배열 출력하기 함수 //////
-const showNumFn2 = (newArray) => { // newArray: 전달된 배열
-    // 배열데이터만큼 숫자 이미지를 만들어서 화면에 출력하기
-    // 순서: 먼저 출력요소에 html넣기 셋팅후
-    // 이퀄 오른쪽에서 배열만큼 map을 돌아서 코드를 생성한다!
-  showNum2.innerHTML = newArray.map(
-    (v) => `<span>${v}</span>`).join("");
+const showNumFn2 = (newArray) => {
+  // newArray: 전달된 배열
+  // 배열데이터만큼 숫자 이미지를 만들어서 화면에 출력하기
+  // 순서: 먼저 출력요소에 html넣기 셋팅후
+  // 이퀄 오른쪽에서 배열만큼 map을 돌아서 코드를 생성한다!
+  showNum2.innerHTML = newArray.map((v) => `<span>${v}</span>`).join("");
 }; ////////////////// showNumFn2함수 /////////////////
 
 // 기본 문자배열로 화면출력함수 최초호출하기
 showNumFn2(arrString);
 
 // [2-4] 문자정렬 선택박스 변경시 실행함수 /////////
-document.querySelector('#sel2')
-.addEventListener('change', function(){
-    // 선택된 선택박스의 value값
+document.querySelector("#sel2").addEventListener("change", function () {
+  // 선택된 선택박스의 value값
   const selValue = this.value;
 
   // console.log('선택값:', selValue);
 
-  if(selValue == 1){
+  if (selValue == 1) {
     // 오름차순 정렬
-    arrString.sort((a,b)=>a==b?0:a<b?-1:1);
-  }else if(selValue == 2){
+    arrString.sort((a, b) => (a == b ? 0 : a < b ? -1 : 1));
+  } else if (selValue == 2) {
     // 내림차순 정렬
-    arrString.sort((a,b)=>a==b?0:a>b?-1:1);
+    arrString.sort((a, b) => (a == b ? 0 : a > b ? -1 : 1));
   }
   showNumFn2(arrString);
 }); /////////////// showNumFn2함수 /////////////////
+
+// [3] 객체데이터 배열의 정렬 //////////////
+// [3-1] 객체데이터 배열
+// - 객체구조 :
+// (1) idx - 순번 / (2) tit - 제목 / (3) cont - 내용
+const list1 = [
+  {
+    idx: 8,
+    tit: "나는 구누?",
+    cont: "공동구매) 슬로건 공구 (계좌와 네이버폼)",
+  },
+  {
+    idx: 4,
+    tit: "여기는 어디?",
+    cont: "총공 공지] 오늘부터 일 2회, 총공 진행합니다",
+  },
+  {
+    idx: 1,
+    tit: "나야나",
+    cont: "연합 갈라 서포트 계좌오픈",
+  },
+  {
+    idx: 15,
+    tit: "이제 얼마나 남은거니?",
+    cont: "음악프로그램에 출연 요청글도 써볼까요?",
+  },
+]; /////////////// list1 /////////////
+
+console.log(list1);
+
+// [3-2] 데이터 바인딩하기 : 함수화하여 재사용!
+// 바인딩 출력대상
+const showList3 = myFn.qs(".showList3");
+
+const showList3Fn = (newArray) => {
+  // newArray 데이터 바인딩할 배열
+  showList3.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>번호</th>
+              <th>제목</th>
+              <th>내용</th>
+            </tr>
+          </thead>
+          <tbody>
+          ${newArray
+            .map(
+              (v) => `            
+                <tr>
+                    <td>${v.idx}</td>
+                    <td>${v.tit}</td>
+                    <td>${v.cont}</td>
+                </tr>
+                `
+            )
+            .join("")}
+            
+            </tbody>
+                </table>
+    
+    `;
+}; //////// showList3Fn 함수 //////////
+
+// 바인딩함수 최초호출!
+showList3Fn(list1);
+console.log("객체배열원본:", list1);
+
+// [3-3] 정렬하기 ////////////////
+// 대상: 기준선택박스 / 정렬선택박스
+const cta3 = myFn.qs("#cta3");
+const sel3 = myFn.qs("#sel3");
+
+// 이벤트 설정하기 : 대상 - sel3
+myFn.addEvt(sel3, "change", function () {
+  //[1] 정렬기준값 읽어오기
+  let cta = cta3.value;
+  console.log("정렬기준값:", cta);
+
+  //[2] 정렬선택값 읽어오기
+  let sel = sel3.value;
+  console.log("정렬선택값:", sel);
+
+  // [3] 배열원본을 변수에 할당하기
+  let newArrey = list1.slice(); // 깊은복사 2. slice() 메서드로 복사하기
+// -> slice(시작순번, 끝순번) : 중간 배열값 가져오기 용도로도 사용됨!
+// -> 시작순번부터 끝순번전까지 잘라서 가져옴
+//-> slice() 아무갑도 없으면 전체배열을 가져옴
+
+//let newArrey = [...list1]; 깊은 복사 1. 스프레드 연산자(...)로 값을 복사하기
+
+
+//   let newArray = list1; -> 얕은 복사
+  //만약 배열을 일반할당하면 얕은복사가 되어서 주소값이 복사된다
+  // 이 변수 newArrey를 변경하면 원본이 변경된다!
+  // 깊은 복사로 주소복사가 아닌 값을 복사해야 원본이 보존된다.
+
+  //[3] 정렬 기준값으로 sort() 메서드를 사용하여 정렬을 변경!
+  if (sel === "1") {
+    //오름차순
+    newArrey.sort((a, b) => (a[cta] == b[cta] ? 0 : a[cta] < b[cta] ? -1 : 1));
+  } //if///
+  else if (sel === "2") {
+    //내림차순
+    newArrey.sort((a, b) => (a[cta] == b[cta] ? 0 : a[cta] > b[cta] ? -1 : 1));
+  } //else if///
+  else { //정렬되기 전 원본으로 돌아가기
+newArrey = list1;
+  } //else///
+
+  // [4] 정렬된 배열 데이터 바인딩하기
+  showList3Fn(newArrey);
+}); /////change 이벤트 함수 //////////////
