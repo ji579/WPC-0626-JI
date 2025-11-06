@@ -76,7 +76,6 @@
 .hero-text {
   position: relative;
   z-index: 2;
-  background: rgba(0,0,0,.4);
   color: #fff;
   width: 100%;
   padding: 34px 38px;
@@ -97,7 +96,6 @@
 .swiper-button-prev {
   color: #fff;
   --swiper-navigation-size: 38px;
-  background: rgba(0,0,0,0.25);
   border-radius: 50%;
 }
 .swiper-pagination {
@@ -715,6 +713,7 @@ section {
   position: relative;
   /* 드래그시 선택영역 안잡히게함! */
   user-select: none;
+  overflow: hidden;
 }
 
 .best-stories-slider {

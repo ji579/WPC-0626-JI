@@ -61,7 +61,7 @@ header {
   display: flex;
   justify-content: center;
   gap: 40px;
-  margin-top: 15px;
+  margin-top: 40px;
   flex-wrap: wrap;
 }
 
