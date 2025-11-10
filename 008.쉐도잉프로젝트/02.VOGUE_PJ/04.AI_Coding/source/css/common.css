@@ -1,5 +1,13 @@
 @charset "UTF-8";
 /* 보그 코리아 공통 CSS - common.css */
+
+/* 공통셋팅 */
+html{
+  overflow-x: hidden;
+  /* 가로스크롤 생김 방지
+  -> 자식요소중 sticky도 이상없음!!! */
+}
+
 /* Header와 Footer 스타일 */
 
 /* ========== 헤더 ========== */
@@ -13,6 +21,13 @@ header {
   height: 209px;
   padding: 40px 0;
   box-sizing: border-box;
+  /* 트랜지션 추가 */
+  transition: top 0.3s ease-in-out; 
+}
+
+/* 스크롤 다운시 헤더 숨김 */
+header.hidden {
+  top: -209px; /* 헤더 높이만큼 위로 이동하여 숨김 (height: 209px) */
 }
 
 /* 로고, 상단메뉴 포함 박스 */
@@ -22,11 +37,15 @@ header {
   margin: 0 auto;
 }
 
+/* 로고박스 */
 .logo {
   font-size: 32px;
   font-weight: 700;
   letter-spacing: 8px;
   text-align: center;
+}
+.logo img {
+  cursor: pointer;
 }
 
 /* 상단메뉴 */
@@ -48,6 +67,17 @@ header {
   font-weight: 600;
   border: none;
 }
+/* 로그인버튼 */
+.login-btn i:last-child {
+  display: none;
+}
+/* 클래스 on넣기 */
+.login-btn.on i:first-child {
+  display: none;
+}
+.login-btn.on i:last-child {
+  display: inline;
+}
 
 /* 구독버튼 */
 .header-actions .gudok-btn {
@@ -61,7 +91,7 @@ header {
   display: flex;
   justify-content: center;
   gap: 40px;
-  margin-top: 40px;
+  margin-top: 15px;
   flex-wrap: wrap;
 }
 
@@ -126,37 +156,51 @@ footer {
 /* ========== 반응형: 태블릿 (820px ~ 1024px) ========== */
 @media (max-width: 1024px) {
   .header-top {
-    padding: 15px 30px;
+    padding: 0 24px;
   }
 
   .logo {
     font-size: 28px;
     letter-spacing: 6px;
+    text-align: left;
+  }
+
+  .gnb-menu {
+    text-align: left;
   }
 
   .nav-list {
+    justify-content: flex-start;
     gap: 25px;
+    margin-top: 30px;
   }
 }
 
 /* ========== 반응형: 모바일 (<819px) ========== */
 @media (max-width: 819px) {
+
+  header {
+    left: 0;
+    height: 108px;
+    padding: 22px 0 13px 24px;
+  }
   .header-top {
-    padding: 12px 20px;
+    padding: 0;
   }
 
-  .logo {
-    font-size: 24px;
-    letter-spacing: 4px;
+  .logo img {
+    height: 33px;
   }
 
   .nav-list {
     gap: 15px;
-    padding: 10px 20px;
+    padding: 10px 0 0;
+    margin-top: 0;
   }
 
-  .nav-list li a {
-    font-size: 11px;
+  .nav-list li a,
+  .header-actions button {
+    font-size: 14px;
   }
 
   footer {
