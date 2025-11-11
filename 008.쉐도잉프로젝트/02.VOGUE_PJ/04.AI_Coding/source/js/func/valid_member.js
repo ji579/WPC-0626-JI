@@ -428,18 +428,18 @@ export default function valid_member() {
       // 로컬쓰에 넣기
       localStorage.setItem("mem-data", JSON.stringify(temp));
 
-      alert("회원가입을 축하드립니다! 짝짝짝!");
+      alert("회원가입을 축하드립니다! 바로 로그인 해주세요!");
       // 원래는 POST방식으로 DB에 회원가입정보를
       // 전송하여 입력후 DB처리완료시 성공메시지나
       // 로그인 페이지로 넘겨준다!
 
       // 로그인 페이지로 리디렉션!
-      //   location.href = 'login.html';
+        // location.href = 'login.html';
 
       // 민감한 입력 데이터 페이지가 다시 돌아와서
       // 보이면 안되기 때문에 히스토리를 지우는
       // replace()로 이동한다!
-      // location.replace("login.html");
+      location.replace("login.html");
       // -> SPA로 변경후에는 MPA처리 불가!!!
 
 
