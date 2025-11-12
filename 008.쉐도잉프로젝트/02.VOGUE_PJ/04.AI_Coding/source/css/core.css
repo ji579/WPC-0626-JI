@@ -6,3 +6,9 @@
 /* 
 font-family: 'Roboto', "Noto Sans KR";
 */
+
+/*********** 2. 공통 클래스 ***********/
+.inbox {
+    max-width: 1400px;
+    margin: 0 auto;
+}
