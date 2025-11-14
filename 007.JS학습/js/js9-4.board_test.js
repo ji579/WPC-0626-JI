@@ -101,10 +101,14 @@ sbtn.addEventListener("click", () => {
   // -> JSON.stringify(배열/객체)
   localStorage.setItem("my-board", JSON.stringify(myArr));
 
-  // (5) 화면출력!
+  // (5) 첫페이지로 변경
+  currentPage = 1;
+  currentPaginationBlock = 1;
+
+  // (6) 화면출력!
   showBoard(myArr);
 
-  // (6) 초기화!
+  // (7) 초기화!
   tit.value = "";
   cont.value = "";
 }); //////////// click 이벤트함수 //////////
@@ -137,6 +141,14 @@ const btnBox = document.querySelector(".btn-box");
    (3) 페이지네이션 UI 구성하기
    - 전체 페이지 수에 맞게 페이지 번호 버튼 생성
    - 현재 페이지에 맞는 버튼 강조 표시
+
+   (4) 페이지네이션의 페이징 구현하기
+   - 페이지네이션을 일정 개수만큼만 보이게함
+   - 양쪽에 페이지네이션 이동 버튼을 생성하여
+   페이지네이션 내에서 페이지네이션 블록을 이동함
+   - 이때 필요한 것은 페이지네이션의 한계수와
+   전체 페이지네이션 블록수와 현재블록번호가 필요함!
+
 *******************************************/
 
 // [ 페이징 관련 변수 셋팅하기 ] /////
@@ -149,6 +161,16 @@ let currentPage = 1;
 
 // (3) 전체 페이지 수
 let totalPages = 0;
+
+// (4) 페이지네이션 한계수
+const paginationLimit = 3;
+
+// (5) 전체 페이지네이션 블록수
+let totalPaginationBlocks = 0;
+
+// (6) 현재 페이지네이션 블록 번호
+let currentPaginationBlock = 1;
+
 //////////////////////////////////////
 
 // 만약 로컬쓰가 있다면 화면출력하기!
@@ -174,6 +196,10 @@ const showBoard = (myFriend) => {
   // 1페이지: 0~2, 2페이지: 3~5, 3페이지: 6~8 ...
   // -> 주의! slice는 끝인덱스 전까지 추출함!
   console.log("현재 페이지 데이터:", pagedData);
+
+  // (0.5-3) 전체 페이지네이션 블록수 계산하기 /////////////
+  totalPaginationBlocks = Math.ceil(totalPages / paginationLimit);
+  console.log("전체 페이지네이션 블록수:", totalPaginationBlocks);
   //////////////////////////////////////////////////////////
 
   // (1) 테이블 형식으로 출력하기
@@ -201,7 +227,7 @@ const showBoard = (myFriend) => {
                 .map(
                   (v, i) => `
             <tr>
-                <td>${i + 1}</td>
+                <td>${(i + 1)+((currentPage-1)*itemsPerPage)}</td>
                 <td>${v.tit}</td>
                 <td>${v.cont}</td>
                 <td>
@@ -227,21 +253,58 @@ const showBoard = (myFriend) => {
         <tfoot>
           <tr>
             <td colspan="5">
+              <!-- 페이지네이션 이전블록이동버튼 -->
+              <button 
+                class="page-block-btn" 
+                data-page-block="${Number(currentPaginationBlock) - 1}" 
+                ${
+                  Number(currentPaginationBlock) === 1 ? 
+                  "disabled" : ""
+                }>◀</button>
+
               <!-- 페이지 번호 버튼 -->
               ${
                 // Array.from()메서드로 숫자생성하기
                 // 1부터 totalPages까지의 숫자 생성
                 // 사용형식: v - 배열값, i - 배열순번
                 // Array.from({length:숫자}, (v, i) => { return ... })
-                Array.from(
-                  { length: totalPages },
-                  (_, i) => `
-                <button class="page-btn" data-page="${i + 1}">
-                  ${i + 1}
-                </button>
-              `
-                ).join("")
+                // 페이지네이션 블록만큼만 보이게 하기 //////
+                // 마지막 블록일 때는 남은 페이지 수만큼만 생성하기
+                (() => { // 익명함수가 이자리에서 실행!
+                  // (1)현재 블록의 시작 페이지 번호
+                  // (1,4,7...)
+                  const blockStartPage = (currentPaginationBlock - 1) * paginationLimit + 1;
+                  // (2)현재 블록의 끝 페이지 번호 
+                  // (전체 페이지 수를 넘지 않도록)
+                  // (3,6,9...)
+                  const blockEndPage = Math.min(blockStartPage + paginationLimit - 1, totalPages);
+                  // 현재 블록에 표시할 페이지 버튼 개수
+                  const buttonsToShow = blockEndPage - blockStartPage + 1;
+                  
+                  return Array.from(
+                    { length: buttonsToShow },
+                    (_, i) => {
+                      const pageNum = blockStartPage + i;
+                      return `
+                        <button 
+                          class="page-btn" 
+                          data-page="${pageNum}"
+                          style="background-color: ${pageNum == currentPage ? "aqua" : "silver"};"
+                        >
+                          ${pageNum}
+                        </button>
+                      `;
+                    }
+                  ).join("");
+                })()
               }
+              <!-- 페이지네이션 다음블록이동버튼 -->
+              <button 
+                class="page-block-btn" 
+                data-page-block="${Number(currentPaginationBlock) + 1}" 
+                ${
+                  Number(currentPaginationBlock) === totalPaginationBlocks ? "disabled" : ""
+                }>▶</button>
             </td>
           </tr>
         </tfoot>
@@ -274,6 +337,7 @@ const showBoard = (myFriend) => {
         myFriend.splice(delIdx, 1);
         // [2] 게시판 첫페이지로 변경하기
         currentPage = 1;
+        currentPaginationBlock = 1;
         // [3] 게시판 다시 출력하기
         showBoard(myFriend);
         // [4] 실제 로컬스에 반영하기
@@ -319,8 +383,8 @@ const showBoard = (myFriend) => {
       tit.value = bgc === "silver" ? myFriend[modIdx].tit : "";
       cont.value = bgc === "silver" ? myFriend[modIdx].cont : "";
 
-      // [7] 히든필드에 수정할 데이터의 배열순번값 넣기
-      hiddenSeq.value = bgc === "silver" ? modIdx : "";
+      // [7] 히든필드에 수정할 데이터의 고유 idx값 넣기 (배열순번이 아님!)
+      hiddenSeq.value = bgc === "silver" ? myFriend[modIdx].idx : "";
 
       console.log("수정항목:", modIdx, bgc);
     }); /////// click ///////
@@ -334,15 +398,31 @@ const showBoard = (myFriend) => {
       // 예: 현재 페이지 번호를 업데이트하고 게시판을 다시 출력
       currentPage = el.dataset.page;
       showBoard(myFriend);
-
-      // [7] 취소버튼을 클릭이벤트 발생하여 초기화
+      // 취소버튼을 클릭이벤트 발생하여 초기화
       cancelBtn.click();
     }); /// click ///
   }); /// forEach ///
+
+  // (5) 페이지네이션 블록 버튼 기능구현 /////
+  document.querySelectorAll(".page-block-btn").forEach((el) => {
+    el.addEventListener("click", () => {
+      console.log("페이지 블록 이동:", el.dataset.pageBlock);
+      // 페이지 블록 이동 시 필요한 로직 추가
+      // 예: 현재 페이지 블록 번호를 업데이트하고 게시판을 다시 출력
+      currentPaginationBlock = el.dataset.pageBlock;
+      showBoard(myFriend);
+      // 취소버튼을 클릭이벤트 발생하여 초기화
+      cancelBtn.click();
+      // 블록 이동후 그 블록의 첫페이지로 이동하기
+      currentPage = (currentPaginationBlock - 1) * paginationLimit + 1;
+      showBoard(myFriend);
+    }); /// click ///
+  }); /// forEach ///
+
 }; //////////// showBoard //////////////
 
 // [ 수정 / 취소 버튼 기능구현 ] /////////
-// 대상 : 수정버튼 - .modify-btn
+// 대상 : 수정버튼 - #update-btn
 // 기능 : 수정할 데이터 항목을 선택하여 로컬스에 넣기
 document.querySelector("#update-btn").addEventListener("click", () => {
   // [1] 로컬스의 데이터를 읽어온후 파싱하기
@@ -360,16 +440,18 @@ document.querySelector("#update-btn").addEventListener("click", () => {
     return;
   }
 
-  // [3] 수정할 데이터 항목 찾기
-  let targetData = currData[hiddenSeq.value];
-  if (!targetData) {
+  // [3] 수정할 데이터 항목 찾기 (idx 값으로 검색)
+  const targetIdx = parseInt(hiddenSeq.value);
+  const targetDataIndex = currData.findIndex(item => item.idx === targetIdx);
+  
+  if (targetDataIndex === -1) {
     alert("수정할 데이터가 없습니다");
     return;
   }
 
   // [4] 수정할 데이터 항목 업데이트
-  targetData.tit = tit.value;
-  targetData.cont = cont.value;
+  currData[targetDataIndex].tit = tit.value;
+  currData[targetDataIndex].cont = cont.value;
 
   // [5] 로컬스에 수정된 데이터 반영하기
   localStorage.setItem("my-board", JSON.stringify(currData));
@@ -392,6 +474,7 @@ cancelBtn.addEventListener("click", () => {
   document.querySelectorAll(".mod-btn").forEach((btn) => {
     btn.style.backgroundColor = "silver";
   });
+
   // [3] 히든필드 초기화
   hiddenSeq.value = "";
 }); ///////// cancel /////////

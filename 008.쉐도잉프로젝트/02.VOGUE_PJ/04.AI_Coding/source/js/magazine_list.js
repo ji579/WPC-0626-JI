@@ -73,9 +73,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
       const params = new URLSearchParams(product);
 
       // Get방식으로 데이터 전달하기 코드 ////
-     location.href = `./magazine_detail.html?${params}`;
+      location.href = `./magazine_detail.html?${params}`;
       // params로 객체를 전달한다!
-
 
 
       // post방식으로 데이터 전송하기
