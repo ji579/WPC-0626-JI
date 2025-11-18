@@ -212,4 +212,3 @@ myFn.qs(".session .role").onclick =
 // 캐릭터소개 삭제
 myFn.qs(".session .cat").onclick = 
 () => sessionStorage.removeItem("actor-cat");
-
